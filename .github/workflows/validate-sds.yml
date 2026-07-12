@@ -1,0 +1,135 @@
+name: SDS Compliance Check
+
+on:
+  pull_request:
+    paths:
+      - 'registry/**/*.md'
+
+jobs:
+  validate-sds:
+    runs-on: ubuntu-latest
+    name: Validate SDS Components
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check SDS Compliance
+        id: check-sds
+        run: |
+          #!/bin/bash
+          
+          # Required SDS components (section headers)
+          REQUIRED_COMPONENTS=(
+            "## Metadata"
+            "## Identity"
+            "## Knowledge Taxonomy"
+            "## Capability Boundaries"
+            "## Decision Engine"
+            "## Constraint Matrix"
+            "## Failure Mode Library"
+            "## Quality Gates"
+            "## Output Templates"
+            "## Ethical Constraint Layer"
+            "## Safety Layer"
+            "## Collaboration Contract"
+            "## Validation Record"
+          )
+          
+          # Get changed files in registry/
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD -- registry/**/*.md)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No registry files changed, skipping validation"
+            exit 0
+          fi
+          
+          FAILED=0
+          
+          for FILE in $CHANGED_FILES; do
+            if [ ! -f "$FILE" ]; then
+              continue
+            fi
+            
+            echo "Validating: $FILE"
+            MISSING_COMPONENTS=()
+            
+            for COMPONENT in "${REQUIRED_COMPONENTS[@]}"; do
+              if ! grep -q "^${COMPONENT}$" "$FILE"; then
+                MISSING_COMPONENTS+=("${COMPONENT}")
+                FAILED=1
+              fi
+            done
+            
+            if [ ${#MISSING_COMPONENTS[@]} -gt 0 ]; then
+              echo "❌ MISSING COMPONENTS in $FILE:"
+              for MISSING in "${MISSING_COMPONENTS[@]}"; do
+                echo "   - $MISSING"
+              done
+              echo ""
+            else
+              echo "✅ $FILE has all 13 components"
+              echo ""
+            fi
+          done
+          
+          if [ $FAILED -eq 1 ]; then
+            echo "validation_failed=true" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "validation_failed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+      - name: Comment on PR if validation fails
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `❌ **SDS Compliance Check Failed**
+
+Your skill is missing one or more required SDS components.
+
+**Required components (all 13 must be present):**
+1. Metadata
+2. Identity
+3. Knowledge Taxonomy
+4. Capability Boundaries
+5. Decision Engine
+6. Constraint Matrix
+7. Failure Mode Library
+8. Quality Gates
+9. Output Templates
+10. Ethical Constraint Layer
+11. Safety Layer
+12. Collaboration Contract
+13. Validation Record
+
+**Why this matters:** Every skill must conform to the 13-component SDS. This is the governance contract that ensures all skills are auditable, composable, and reliable.
+
+**How to fix:**
+- Run \`SKILL-CREATOR.md\` through Claude using the 10-phase process
+- Ensure all 13 component sections are present with \`##\` markdown headers
+- See \`SKILL-DEFINITION-STANDARD.md\` for examples
+
+For detailed help, see \`CONTRIBUTING.md\`.`
+            })
+
+      - name: Comment on PR if validation passes
+        if: success()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ **SDS Compliance Check Passed**
+
+Your skill meets all 13 SDS component requirements. Ready for functional testing.`
+            })
