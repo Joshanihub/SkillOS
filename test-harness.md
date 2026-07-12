@@ -1,294 +1,277 @@
-﻿# SkillOS Validation Test Harness v1.0
+# SkillOS Validation Test Harness v1.1
 
-Every skill must pass these three tests before it can be published to the registry.
+Every skill must pass these three standardized tests before it can be
+published to the registry. Results are recorded in the skill's Component 13
+(Validation Record). No skill enters the registry with `overall_result: fail`.
 
-Record results in the skill's Component 13 (Validation Record).
+---
+
+## What These Tests Verify
+
+These tests do not check if a skill sounds good. They check if a skill
+**behaves correctly** under the three conditions that matter in real use:
+
+**Test 1** — Does the skill produce clean, correct output when the request is clear?
+**Test 2** — Does the skill handle ambiguity with the correct protocol?
+**Test 3** — Does the skill recognize its own limits and route cleanly?
+
+A skill that passes all three can be trusted. A skill that fails any one
+should not be in a registry that other people rely on.
 
 ---
 
 ## How to Run Tests
 
-1. **Install the skill** as a system prompt in a Claude Project, ChatGPT, Gemini, or compatible interface
-2. **Send each test prompt** exactly as written
-3. **Evaluate the response** against the pass criteria below
-4. **Record results:** pass | fail + observations
-5. **Submit** Validation Record with your PR
+1. Install the skill as a system prompt in your AI interface of choice
+2. Send each test prompt and evaluate the response against the pass criteria
+3. Record `pass` or `fail` and your observations in Component 13
+4. If the skill fails, revise and retest before submitting
+
+**Model to test on:** Use any Tier 1 or Tier 2 model from the recommended
+list in `SKILL-CREATOR.md`. Record exactly which model you tested on.
+
+**Cross-model testing (encouraged):** If you test on multiple models, add
+additional validation blocks to Component 13. Cross-model results help the
+community understand where skills degrade and why.
 
 ---
 
 ## Test 1 — Simple Request
 
-**Purpose:** Does the skill produce clean, correct, useful output on a well-specified request without overengineering?
+**Purpose:**
+Does the skill produce clean, correct, useful output on a well-specified
+request without overengineering, without unnecessary questions, and without
+recommending deprecated practices?
 
-This tests: core competence, appropriate complexity, template adherence, quality gates.
+**How to write the prompt:**
+- Clear, well-specified request in the skill's documented domain
+- Include enough context that the request is ≥80% complete
+- Should map to Code Generation (Mode 1) or Architectural Review (Mode 2)
+- Do not deliberately create ambiguity — this test is for clarity
 
-### Generic Template
-
-\\\
-[Clear, well-specified request squarely within the skill's documented domain]
-[Include sufficient context for the skill to proceed without asking questions]
-[Request should map to Mode 1 (Code Generation) or Mode 2 (Architecture Review)]
-[Make it realistic — something a real engineer would ask]
-\\\
-
-### Example: React Specialist
-
-\\\
-Build me a reusable React form component with TypeScript that:
-- Accepts field definitions (name, type, validation rules)
-- Handles form state internally with hooks
-- Shows validation errors inline
-- Provides a clean API for parent components
-
-Make it production-ready and explain the design decisions.
-\\\
-
-### Pass Criteria
-
-- [ ] Skill produces output without unnecessary clarifying questions
-- [ ] Output follows the appropriate Output Template (Component 9)
-  - Mode 1 (Code Generation) should include: Problem Analysis, Approach, Implementation, Trade-offs, Quality Notes
-  - Mode 2 (Architecture Review) should include: Current State, Risk Surface, Recommendations, Migration Path
-- [ ] Quality gates are visible (output is complete, assumptions documented, edge cases acknowledged)
+**Pass criteria:**
+- [ ] Skill proceeds without asking unnecessary clarifying questions
+  (request was ≥80% complete; clarifying questions here is a fail)
+- [ ] Output follows the appropriate Output Template from Component 9
+- [ ] Assumptions are documented inline where made
+- [ ] Quality gates are visibly applied (output is complete, edge cases noted)
 - [ ] Ethical constraint layer shows evidence of having run
-- [ ] Output is accurate and domain-appropriate
-- [ ] Output does not assume a default language, region, or infrastructure
-- [ ] If TypeScript: types are specific (no excessive \ny\)
-- [ ] If accessibility-relevant: WCAG considerations are mentioned
-- [ ] Code/output is production-ready (not pedagogical)
+- [ ] Output is accurate and domain-specific — not generic engineering advice
+- [ ] No deprecated practices recommended as current best practice
+- [ ] No default language, region, or infrastructure assumed without disclosure
 
-### Fail Indicators
-
-- ❌ Skill asks clarifying questions when the request was ≥80% complete
-- ❌ Output is generic rather than domain-specific
-- ❌ Output is missing critical sections from the Output Template
-- ❌ Output recommends deprecated practices as current
-- ❌ Code has obvious bugs or security issues
-- ❌ Output ignores stated constraints
+**Fail indicators:**
+- Skill asks clarifying questions when request was clear and ≥80% complete
+- Output is generic — could apply to any domain
+- Output is missing sections defined in the Output Template
+- Output recommends deprecated patterns (check evolution registry)
+- Output assumes Western/English/AWS defaults without disclosing the assumption
 
 ---
 
 ## Test 2 — Ambiguous Request
 
-**Purpose:** Does the skill correctly handle an under-specified request — asking ONE focused question OR proceeding with documented assumptions?
+**Purpose:**
+Does the skill correctly handle an under-specified request — asking exactly
+one focused clarifying question or proceeding with documented assumptions —
+never asking multiple questions, never blocking indefinitely?
 
-This tests: ambiguity resolution, constraint handling, assumption documentation, decision logic.
+**How to write the prompt:**
+- Meaningful request in the skill's domain but missing key constraints
+- Aim for 50–79% completeness
+- Omit: team size, performance requirements, regulatory context, timeline,
+  specific technology preferences
+- Must be genuine enough that the skill cannot dismiss it as nonsensical
 
-**The core rule:** NEVER block indefinitely. Either ask one focused question OR proceed with documented assumptions. No exceptions.
+**The Ambiguity Resolution Protocol the skill must follow:**
+```
+≥ 80% complete → proceed; document assumptions inline
+50–79% complete → ask ONE focused question; then proceed
+< 50% complete → ask maximum THREE questions; then proceed
+NEVER → block indefinitely
+NEVER → ask questions whose answers would not change the output
+```
 
-### Generic Template
+**Pass criteria:**
+- [ ] If skill asks for clarification: asks exactly ONE focused question
+  (not a list of five questions "to better understand your needs")
+- [ ] If skill proceeds: documents assumptions explicitly and visibly inline
+- [ ] Skill does NOT ask multiple clarifying questions
+- [ ] Skill does NOT refuse to proceed pending more information
+- [ ] Skill does NOT produce confident output without acknowledging ambiguity
+- [ ] Whatever output it produces is still useful despite the ambiguity
 
-\\\
-[Request with 50-70% completeness — meaningful but missing key constraints]
-[Do NOT specify some critical context: team size, performance requirements, regulatory context, timeline, budget]
-[Make it genuine — something that actually has ambiguity, not nonsense]
-\\\
-
-### Example: React Specialist
-
-\\\
-I need to optimize my React application's performance. It's currently slow on mobile devices. 
-How should I approach this?
-\\\
-
-(This is ambiguous: What's slow? Where's the bottleneck? What devices? What's "slow" — 5s, 10s? 
-What's the priority: load time or runtime performance? Users or clicks matter? etc.)
-
-### Pass Criteria
-
-- [ ] If skill asks for clarification: **asks exactly ONE focused question**, not a list
-  - ✅ "What's your primary performance bottleneck: initial load time or runtime responsiveness?"
-  - ❌ "Tell me: (1) your metrics (2) team size (3) timeline (4) budget (5) current stack"
-- [ ] If skill proceeds without asking: documents assumptions explicitly and inline
-  - ✅ "I'm assuming your bottleneck is runtime performance (not load time), based on your mention of mobile. If that's wrong, let me know."
-- [ ] Skill does NOT ask five clarifying questions before doing anything
-- [ ] Skill does NOT refuse to proceed, saying "I need more information"
-- [ ] Whatever the skill produces is still useful despite the ambiguity
-- [ ] Assumptions are surfaced prominently, not buried
-
-### Fail Indicators
-
-- ❌ Skill asks more than one clarifying question
-- ❌ Skill refuses to proceed ("I need more information before proceeding")
-- ❌ Skill proceeds but buries assumptions without surfacing them
-- ❌ Skill produces confident output without acknowledging ambiguity
-- ❌ Skill asks "What do you want me to do?" or similar non-specific follow-ups
+**Fail indicators:**
+- Skill asks more than one clarifying question
+- Skill refuses to proceed without more information
+- Skill produces confident output without acknowledging that key constraints were missing
+- Skill proceeds but buries assumptions so they are not visible
+- Skill asks questions whose answers would not materially change the approach
 
 ---
 
 ## Test 3 — Edge Case / Domain Boundary
 
-**Purpose:** Does the skill recognize when a request falls at or beyond its domain boundary, and route cleanly rather than hallucinating?
+**Purpose:**
+Does the skill recognize when a request falls at or beyond its domain boundary,
+route cleanly to the correct specialist, and handle the in-scope portion correctly
+without hallucinating expertise it does not have?
 
-This tests: boundary awareness, routing logic, refusal pattern, collaboration protocol.
+**How to write the prompt:**
+Write a request that either:
+a) Touches the skill's domain but requires expertise from an adjacent domain, OR
+b) Is clearly outside the skill's documented capability boundaries
 
-### Generic Template
+The skill's Capability Boundaries section and Routing Table define what "edge case"
+means for this specific skill.
 
-\\\
-[Request that touches the skill's domain but requires expertise from an adjacent domain]
-OR
-[Request that is clearly outside the skill's documented capability boundaries]
-
-The skill should recognize the boundary, route appropriately, not pretend it can handle everything.
-\\\
-
-### Example: React Specialist
-
-\\\
-Build me a React component that tracks user behavior and sends analytics data to our backend, 
-plus integrate it with our authentication system so only logged-in users see this data.
-\\\
-
-(This touches React — the component itself. But it involves: backend integration, authentication 
-system design, data privacy/compliance. The skill should handle the React part, route the auth 
-part, and mention data privacy considerations.)
-
-### Pass Criteria
-
-- [ ] Skill correctly identifies which part is in-scope and which is out-of-scope
-- [ ] Skill routes the out-of-scope portion to the correct adjacent skill
-  - React → Performance issue → DevOps Specialist
-  - React → Auth design → Security Principles / Authentication Pattern skill
-  - React → Data compliance → Security Principles / Data Privacy skill
+**Pass criteria:**
+- [ ] Skill correctly identifies that the request touches or exceeds its domain boundary
+- [ ] Skill routes the out-of-scope portion to the correct skill by skill_name
 - [ ] Skill handles the in-scope portion of the request correctly
-- [ ] Skill does not hallucinate expertise it doesn't have
-- [ ] Skill does not refuse the entire request when part of it is in-scope
-- [ ] Routing is specific (not just "ask a backend engineer")
+- [ ] Skill does not hallucinate expertise beyond its documented capabilities
+- [ ] Skill does not refuse the entire request when part of it is clearly in-scope
 
-### Fail Indicators
-
-- ❌ Skill attempts to answer everything regardless of domain boundary
-- ❌ Skill refuses the entire request because part of it is out-of-scope
-- ❌ Skill routes to the wrong adjacent skill
-- ❌ Skill provides confident but incorrect guidance outside its domain
-- ❌ Skill has no routing logic (no idea where to send things)
+**Fail indicators:**
+- Skill attempts to answer everything regardless of domain boundary
+- Skill refuses the entire request because part of it is out of scope
+- Skill routes to the wrong adjacent skill
+- Skill provides detailed confident guidance on something outside its expertise
+- Skill acknowledges the boundary but then crosses it anyway
 
 ---
 
 ## SDS Compliance Check
 
-Before recording validation results, verify all 13 components:
+Run this before recording any validation results. All boxes must be checked
+for the skill to pass SDS compliance.
 
-`
-COMPONENT PRESENCE
-□ Component 1 — Skill Metadata: YAML block present and complete
-□ Component 2 — Professional Identity: Realistic, specific, confidence calibration present
-□ Component 3 — Knowledge Taxonomy: Hierarchical structure. Evolution registry subsection present.
-□ Component 4 — Capability Boundaries: Explicit in-scope AND out-of-scope with routing table
-□ Component 5 — Decision Engine: Branching logic, not prose. Ambiguity protocol explicit.
-□ Component 6 — Constraint Matrix: All 13 constraints mapped with domain-specific weights
-□ Component 7 — Failure Mode Library: 15+ entries, all domain-specific (not generic)
-□ Component 8 — Quality Gates: Universal + domain-specific. Not just generic defaults.
-□ Component 9 — Output Templates: 4+ modes with defined structures (Code, Review, Debug, Teach)
-□ Component 10 — Ethical Constraint Layer: Universal 3 + domain-specific rules (not just the 3)
-□ Component 11 — Safety Layer: 4 universal checks + domain-specific additions
-□ Component 12 — Collaboration Contract: Typed I/O in YAML format
-□ Component 13 — Validation Record: Template present (results filled in after testing)
+```
+□ Component 1  — Metadata YAML block present and complete
+                  Includes: portability_notes, cultural_modes, temperature_range
+□ Component 2  — Professional Identity: specific career arc, confidence calibration
+□ Component 3  — Knowledge Taxonomy: hierarchical (not flat); evolution states per concept;
+                  Evolution Registry section present with all 5 states labeled
+□ Component 4  — Capability Boundaries: explicit in-scope AND out-of-scope;
+                  routing table present; self-awareness declaration present
+□ Component 5  — Decision Engine: all 10 phases present as branching logic (not prose);
+                  ambiguity protocol thresholds explicit; temperature modes defined;
+                  confidence scoring defined
+□ Component 6  — Constraint Matrix: all 13 constraints with domain-specific weights;
+                  cultural intelligence sub-component present;
+                  global regulatory awareness present (non-Western jurisdictions included)
+□ Component 7  — Failure Mode Library: 15+ entries; all domain-specific (not generic);
+                  full format per entry (pattern, why, detection, prevention, impact)
+□ Component 8  — Quality Gates: 10 universal gates present PLUS domain-specific gates
+                  (not just the universal defaults)
+□ Component 9  — Output Templates: 4+ modes with defined structures (not just names)
+□ Component 10 — Ethical Constraint Layer: universal 3 rules PLUS domain-specific rules
+                  (domain-specific rules must be present — generic 3 alone is insufficient)
+□ Component 11 — Safety Layer: 4 universal checks PLUS domain-specific additions;
+                  reversibility scale (LOW/MEDIUM/HIGH/CRITICAL) present
+□ Component 12 — Collaboration Contract: typed YAML I/O; portability contract present;
+                  upstream and downstream skills listed by skill_name
+□ Component 13 — Validation Record: template present; three test prompts generated;
+                  results pending (to be filled after testing)
 
-GLOBAL COMPLIANCE
 □ No language assumed as default
 □ No region or jurisdiction assumed as default
-□ No infrastructure stack assumed as default (not AWS, not US-timezone, etc.)
-□ License: MIT
-□ Professional Identity includes confidence calibration
-□ Failure modes are domain-specific (not generic)
-□ Output templates are domain-specific
-□ Ethical constraints include domain-specific rules beyond universal three
-
-All boxes must be checked for SDS compliance: PASS
-`
+□ No infrastructure stack assumed as default
+□ MIT license confirmed
+□ File named correctly: [skill_name]-v[major].[minor].[patch].md
+```
 
 ---
 
-## Recording Validation Results
+## Recording Results
 
-**Template for Component 13 (Validation Record):**
+Copy this block into Component 13 of your skill and fill in your results:
 
-\\\yaml
-validation_date: 2025-07-12
+```yaml
+validation_date: [ISO date e.g. 2026-07-12]
 validated_by: [GitHub handle or "community"]
-model_tested_on: [Model name and version. e.g., "Claude 3.5 Sonnet"]
+model_tested_on: [Specific model name and version]
 sds_compliance: pass | fail
 
 test_1_simple:
-  prompt: "[Exact test prompt used — copy from test harness]"
+  prompt: [Exact prompt used — must be reproducible by others]
+  expected: [What a passing response looks like — be specific]
   result: pass | fail
-  evidence:
-    - "[Specific observation from the output]"
-    - "[Did it follow Output Template correctly?]"
-    - "[Were assumptions documented?]"
-  notes: "[Any other observations]"
+  notes: [What was good, what was weak, anything unexpected]
 
 test_2_ambiguous:
-  prompt: "[Exact test prompt used]"
+  prompt: [Exact prompt used]
+  expected: [One clarifying question OR proceed with documented assumptions]
   result: pass | fail
-  evidence:
-    - "[Did it ask one question or proceed with assumptions?]"
-    - "[Were assumptions surfaced prominently?]"
-    - "[Was the output still useful despite ambiguity?]"
-  notes: "[Any other observations]"
+  notes: [Observations — what question it asked, how it handled ambiguity]
 
 test_3_edge_case:
-  prompt: "[Exact test prompt used]"
+  prompt: [Exact prompt used]
+  expected: [Recognize boundary; route correctly; handle in-scope portion]
   result: pass | fail
-  evidence:
-    - "[Did it correctly identify the domain boundary?]"
-    - "[Did it route to the correct skill?]"
-    - "[Did it handle the in-scope part correctly?]"
-  notes: "[Any other observations]"
+  notes: [How it handled the boundary — hallucination or clean routing]
 
 overall_result: pass | fail
+
 regression_notes:
-  - "[Any patterns observed across tests]"
-  - "[Recommendations for future versions]"
-  - "[Anything that should inform the evolution registry]"
-\\\
+  - [Patterns that should inform future versions]
+  - [Specific things to watch for in this skill as it evolves]
+```
+
+**Cross-model validation (encouraged, not required for v1.0):**
+```yaml
+additional_validation:
+  - model: [model name and version]
+    date: [ISO date]
+    validated_by: [GitHub handle]
+    test_1_result: pass | fail
+    test_2_result: pass | fail
+    test_3_result: pass | fail
+    degradation_notes: [What changed vs. the primary model]
+```
 
 ---
 
-## Submission Checklist
+## What "Pending" Means
 
-Before submitting your skill:
+Three skills in the registry currently show `result: pending`.
+This means the skill has been compiled and SDS-reviewed but the
+validation prompts have not yet been run by a human.
 
-- [ ] All three tests run and recorded
-- [ ] Overall result: **pass**
-- [ ] SDS compliance: **all boxes checked**
-- [ ] Skill file placed in correct \egistry/tier-X/\ directory
-- [ ] File name follows convention: \[skill_name]-v[version].md\
-- [ ] Validation Record is complete and accurate
-- [ ] PR includes one-paragraph description of what the skill solves
+These skills are included in v1.0 because their compilation quality
+is high, but they should be considered `experimental` status until
+all three tests are run and recorded.
 
----
+**If you want to run validation tests for the community:**
+1. Install the skill as a system prompt
+2. Run the three prompts already written in each skill's Component 13
+3. Record your results
+4. Submit a PR updating the Validation Record
+5. If all three pass, the skill upgrades from `experimental` to `stable`
 
-## Interpreting Results
-
-**All three tests pass?** ✅ Ready to submit.
-
-**One or more tests fail?** ❌ Fix and re-test.
-Common reasons:
-- Missing output template sections
-- Assumptions not documented
-- Boundary not recognized (skill hallucinated outside domain)
-- Excessive clarifying questions
-- Generic guidance instead of domain-specific
-
-**SDS compliance check catches issues?** ❌ Review SKILL-DEFINITION-STANDARD.md for the missing component.
+This is one of the most valuable contributions you can make right now.
 
 ---
 
-## Community Validation
+## Test Prompt Writing Guidelines
 
-After a skill is merged, the community may run additional tests:
-- Testing on models not in the original validation (e.g., Gemini, Mistral)
-- Testing in non-English languages
-- Long-running usage patterns
-- Production edge cases
+When writing tests for a new skill you are contributing:
 
-If you discover a skill producing incorrect or outdated output:
-- Open an issue describing the problem
-- Include the test prompt, expected behavior, actual behavior
-- The maintainer will review and update the skill
+**Test 1 (Simple) should:**
+- Be a real request you would actually make of this specialist
+- Have enough context that any competent practitioner could answer it
+- Test the skill's most common use case, not an unusual one
+
+**Test 2 (Ambiguous) should:**
+- Be genuinely under-specified — missing constraints that actually matter
+- Not be so vague that the skill should reject it entirely
+- Be a request you might realistically send before you knew what information was needed
+
+**Test 3 (Edge Case) should:**
+- Target a specific boundary documented in Component 4 (Capability Boundaries)
+- Be a request that an inexperienced user might reasonably send to this skill
+- Have a clear "correct" answer about which specialist should handle the out-of-scope portion
 
 ---
 
-*Test Harness v1.0 · SkillOS · MIT License · Built for reliability at scale*
+*Test Harness v1.1 · SkillOS · MIT License · Owned by the world*

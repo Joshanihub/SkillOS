@@ -1,128 +1,168 @@
-# SkillOS Context for Sessions
+# SkillOS — Session Context for AI Coding Tools
 
-## Project Overview
+Feed this file to Codex CLI (or any AI coding tool) at the start of
+every automation session. It prevents re-explaining the project each time.
 
-**SkillOS** — An open-source, platform-agnostic AI Skills Operating System. MIT licensed. Owned by the world.
-
-A governance standard + compiler system that makes AI agent behavior reproducible, composable, and auditable at scale.
-
-## Current Status
-
-- **Version:** v1.0 (Foundation Complete)
-- **Foundation:** 5 core files (SDS, Skill Creator, README, Contributing, Test-Harness)
-- **Pilot Skills:** 3 implemented (Software Architect Tier 0, Frontend Specialist Tier 1, React Expert Tier 2)
-- **GitHub:** https://github.com/Joshanihub/SkillOS
-- **License:** MIT
-
-## Core Concepts
-
-### Skill Definition Standard (SDS)
-
-Every skill MUST contain all 13 components. Missing any = validation failure.
-
-1. **Metadata** — YAML header with versioning, tier, compatibility
-2. **Identity** — Professional persona with experience level + confidence calibration
-3. **Knowledge Taxonomy** — Hierarchical domain knowledge + evolution registry
-4. **Capability Boundaries** — In-scope + out-of-scope with routing table
-5. **Decision Engine** — Branching logic for request classification
-6. **Constraint Matrix** — Weighted priority map for domain-specific decisions
-7. **Failure Mode Library** — 15+ domain-specific failure patterns (not generic)
-8. **Quality Gates** — Universal + domain-specific checklist
-9. **Output Templates** — 4+ structured modes with defined sections
-10. **Ethical Constraint Layer** — 3 universal rules + domain-specific rules
-11. **Safety Layer** — 4 universal checks + domain-specific additions
-12. **Collaboration Contract** — YAML I/O interface for multi-skill orchestration
-13. **Validation Record** — Proof the skill was tested and works
-
-### Skill Creator (10-Phase Compiler)
-
-Deterministic process for generating new skills. Each phase depends on previous output.
-
-1. Domain Cartography → 2. Identity Calibration → 3. Failure Mode Library → 4. Decision Engine → 5. Constraint Matrix → 6. Collaboration Contract → 7. Quality Gates → 8. Output Templates → 9. Ethical Constraints → 10. Validation Pass
-
-**Key rule:** Phases cannot be skipped or reordered.
-
-### Tier System
-
-- **Tier 0:** Foundational (principles all inherit from) — e.g., Software Architect
-- **Tier 1:** Domain specialists — e.g., Frontend Specialist, Backend Specialist
-- **Tier 2:** Technology experts — e.g., React Expert, TypeScript Expert
-- **Tier 3:** Pattern specialists — horizontal patterns (not yet implemented)
-- **Tier 4:** Orchestration — multi-skill coordinators (not yet implemented)
-
-### Global-First Architecture
-
-No defaults for:
-- Language (en/es/fr/zh/ja equally valid)
-- Region or jurisdiction (GDPR, NDPR, Kenya DPA, PDPA, LGPD, CCPA all equally valid)
-- Infrastructure (no AWS/GCP/Azure bias)
-- Platform (Claude, OpenAI, Gemini, Mistral all supported)
-
-## Key Rules
-
-**For any file in `registry/`:**
-- MUST contain all 13 SDS components (validated by GitHub Actions)
-- MUST use semantic markdown (no custom formats)
-- MUST be named `[skill-name]-v[version].md` (e.g., `react-expert-v1.0.0.md`)
-- MUST be in correct tier subdirectory (`tier-0/`, `tier-1/`, etc.)
-- MUST pass 3-test validation (Simple, Ambiguous, Edge Case)
-
-**For commits:**
-- Use conventional commit format: `feat:`, `test:`, `docs:`, `ci:`, etc.
-- Example: `feat: add database-specialist skill` or `test: software-architect v1.0.0 validation complete`
-
-## File Structure
-
+```bash
+# Codex CLI usage
+codex --context "$(cat context.md)" "[your task]"
 ```
-SkillOS/
-├── SKILL-DEFINITION-STANDARD.md    # The governance law
-├── SKILL-CREATOR.md                # The 10-phase compiler
-├── README.md                        # Project front door
-├── CONTRIBUTING.md                 # How to contribute
-├── test-harness.md                 # 3-test validation protocol
-├── LICENSE                         # MIT
-├── .gitignore                      # Markdown project ignores
-├── context.md                      # This file
-├── .github/
-│   └── workflows/
-│       └── validate-sds.yml        # Automated SDS compliance checker
-└── registry/
-    ├── tier-0/
-    │   └── software-architect-v1.0.0.md
-    ├── tier-1/
-    │   ├── frontend-specialist-v1.0.0.md
-    │   ├── backend-specialist-v1.0.0.md (future)
-    │   └── ...
-    ├── tier-2/
-    │   ├── react-expert-v1.0.0.md
-    │   ├── typescript-expert-v1.0.0.md (future)
-    │   └── ...
-    ├── tier-3/
-    │   └── (reserved for pattern specialists)
-    └── tier-4/
-        └── (reserved for orchestration)
-```
-
-## How to Use This File
-
-- **Start of new session:** Feed this to Claude before explaining the project
-- **Before adding skills:** Review SDS components and tier system
-- **Before submitting PR:** Ensure your skill has all 13 components
-- **Before building features:** Refer to global-first rules
-
-## Immediate Next Steps (v1.0 completion)
-
-1. **Manual validation tests** — Run 3 tests per skill, record results
-2. **Record results** — Update Validation Record sections in each skill
-3. **GitHub Actions** — SDS compliance checker ready (automated)
-4. **Community ready** — v1.0 finalized
-
-## Contact & License
-
-- **License:** MIT
-- **Repository:** https://github.com/Joshanihub/SkillOS
-- **Owned by:** The world (no vendor lock-in)
 
 ---
 
-*Last updated: 2026-07-12 · Version: v1.0 Foundation*
+## What This Project Is
+
+**SkillOS** — An open, platform-agnostic AI Skills Operating System.
+Not a prompt library. A **standard** for designing, validating, versioning,
+and orchestrating specialized AI reasoning systems.
+
+The analogy: what Docker did for containers, SkillOS does for AI agent behavior.
+
+**License:** MIT. Owned by the world. No vendor, region, or company owns it.
+
+---
+
+## Repository Structure
+
+```
+skillOS/
+├── SKILL-DEFINITION-STANDARD.md   ← The SDS — 13-component governance contract
+├── SKILL-CREATOR.md               ← Compiler system prompt — generates skills
+├── CONTRIBUTING.md                ← Contribution and governance rules
+├── context.md                     ← This file
+│
+├── registry/
+│   ├── tier-0/                    ← Foundational disciplines
+│   │   └── software-architect-v1.0.0.md
+│   ├── tier-1/                    ← Domain specialists
+│   │   └── frontend-specialist-v1.0.0.md
+│   ├── tier-2/                    ← Technology experts
+│   │   └── react-expert-v1.0.0.md
+│   ├── tier-3/                    ← Pattern specialists (empty — v2.0)
+│   └── tier-4/                    ← Orchestration (empty — v2.0)
+│
+└── validation/
+    └── test-harness.md            ← Three tests every skill must pass
+```
+
+---
+
+## Current Status
+
+**Version:** v1.0 — Foundation complete
+**Phase:** Pre-launch — validation tests pending; GitHub push pending
+
+**What exists:**
+- SKILL-DEFINITION-STANDARD.md — complete, 13 components defined
+- SKILL-CREATOR.md — complete, 10-phase compiler system prompt
+- 3 pilot skills — generated, validation tests not yet run
+- test-harness.md — complete, test prompts written
+
+**What's pending:**
+- Run validation tests on 3 pilot skills (manual — requires human judgment)
+- Record pass/fail in each skill's Component 13 (Validation Record)
+- Push to GitHub
+- Set up GitHub Actions for automated SDS compliance on PRs
+
+---
+
+## The SDS Standard — What Every Skill Must Have
+
+Every file in `registry/` must contain all 13 components.
+A skill missing any component is INVALID and must not be committed.
+
+```
+Component 1  — Skill Metadata (YAML block)
+Component 2  — Professional Identity
+Component 3  — Knowledge Taxonomy (hierarchical, not flat)
+Component 4  — Capability Boundaries (in-scope + out-of-scope + routing table)
+Component 5  — Decision Engine (branching logic, not prose)
+Component 6  — Constraint Matrix (13 cross-cutting concerns)
+Component 7  — Failure Mode Library (minimum 15, domain-specific)
+Component 8  — Quality Gate Checklist (universal + domain-specific)
+Component 9  — Output Template Library (minimum 4 modes)
+Component 10 — Ethical Constraint Layer (universal 3 + domain-specific)
+Component 11 — Safety Layer (data minimalism, reversibility, blast radius)
+Component 12 — Collaboration Contract (typed YAML I/O)
+Component 13 — Validation Record (3 test results required to publish)
+```
+
+---
+
+## Tier System
+
+```
+Tier 0 → Foundational: Software Architecture, Security, Performance, Systems Thinking
+Tier 1 → Domain: Frontend, Backend, DevOps, ML/AI, Database, Cloud, Mobile
+Tier 2 → Technology: React, Next.js, TypeScript, Node.js, PostgreSQL, Docker
+Tier 3 → Pattern: Auth, Caching, CI/CD, Testing, Real-time, Observability
+Tier 4 → Orchestration: Context routing, planning, memory, specialist activation
+```
+
+---
+
+## File Naming Convention
+
+```
+[skill-name]-v[major].[minor].[patch].md
+
+Examples:
+  software-architect-v1.0.0.md
+  react-expert-v1.0.0.md
+  postgres-specialist-v1.0.0.md
+```
+
+---
+
+## Commit Message Convention
+
+```
+feat: add [skill-name] to registry (tier-[N])
+test: [skill-name] v[version] validation complete
+fix: [skill-name] — [what was fixed]
+docs: update [file] — [what changed]
+ci: add [workflow name]
+chore: [maintenance task]
+```
+
+---
+
+## Global Rules — Never Violate
+
+These apply to every file in the repository:
+
+1. No skill assumes a default language
+2. No skill assumes a default region or jurisdiction
+3. No skill assumes a default infrastructure stack
+4. No skill is published without all 13 SDS components
+5. No skill is published without a completed Validation Record
+6. All skills are MIT licensed
+7. No vendor, platform, or model is privileged
+
+---
+
+## Key Commands for Automation Tasks
+
+**Initialize repo:**
+```bash
+git init && git add . && git commit -m "feat: SkillOS v1.0 foundation"
+git remote add origin [repo-url] && git push -u origin main
+```
+
+**Check SDS compliance (manual):**
+Verify each registry file contains all 13 section headers listed above.
+
+**Record validation results:**
+Open the skill file, find the `validation_date: pending` block in
+Component 13, update result fields to `pass` or `fail` with notes.
+
+**Add a new skill:**
+1. Generate via SKILL-CREATOR.md
+2. Run three tests from test-harness.md
+3. Record results in Component 13
+4. Place in correct tier directory
+5. Commit: `feat: add [skill-name] to registry (tier-[N])`
+
+---
+
+*context.md · SkillOS v1.0 · MIT License*
