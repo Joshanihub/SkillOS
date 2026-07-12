@@ -84,7 +84,7 @@ jobs:
           fi
 
       - name: Comment on PR if validation fails
-        if: failure()
+        if: ${{ github.event_name == 'pull_request' && failure() }}
         uses: actions/github-script@v6
         with:
           script: |
@@ -96,7 +96,7 @@ jobs:
             })
 
       - name: Comment on PR if validation passes
-        if: success()
+        if: ${{ github.event_name == 'pull_request' && success() }}
         uses: actions/github-script@v6
         with:
           script: |
