@@ -1,0 +1,142 @@
+# SkillOS Project .gitignore
+# Comprehensive exclusions for development, testing, and deployment
+
+### IDE & Editor Files ###
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vim/
+.emacs.d/
+.netrwhist
+
+### OS-Specific Files ###
+Thumbs.db
+.DS_Store
+*.tmp
+.AppleDouble
+.LSOverride
+
+### Node/JavaScript (if using Node-based tools) ###
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+dist/
+build/
+.env
+.env.local
+.env.*.local
+
+### Python (if using Python tools) ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+### SkillOS Specific ###
+# Validation test outputs (generated during testing)
+SkillOsTests/
+test-output/
+validation-output/
+
+# Session/temporary files
+.session
+*.session
+.tmp/
+temp/
+
+# Generated documentation (if auto-generated)
+dist-docs/
+generated-docs/
+
+# Local environment/configuration overrides
+.local/
+config.local.json
+.env.local
+secrets/
+*.key
+*.pem
+
+### Build Artifacts ###
+out/
+build/
+dist/
+*.tar.gz
+*.zip
+
+### Logs ###
+*.log
+logs/
+error.log
+access.log
+
+### Dependency Managers ###
+Gemfile.lock
+Pipfile.lock
+poetry.lock
+
+### Compiled & Compiled-Adjacent Files ###
+*.class
+*.jar
+*.exe
+*.dll
+*.o
+*.a
+
+### Database Files ###
+*.db
+*.sqlite
+*.sqlite3
+*.postgres
+*.backup
+
+### IDE Configuration (Project-Specific) ###
+.vscode/settings.json
+.idea/workspace.xml
+.idea/misc.xml
+
+### Testing ###
+coverage/
+.nyc_output/
+htmlcov/
+pytest_cache/
+.pytest_cache/
+
+### Personal Notes & Planning (Not for Repo) ###
+NOTES.md
+TODO-PERSONAL.md
+.plan/
+plan.local.md
+
+### Archives & Compressed Files ###
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+### Misc ###
+.DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-workspace
+.history/
+
+### Keep These (Whitelist) ###
+# !.env.example
+# !.gitkeep
+# !registry/
+# !.github/
