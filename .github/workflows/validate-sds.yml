@@ -1,6 +1,7 @@
 name: SDS Compliance Check
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - 'registry/**/*.md'
