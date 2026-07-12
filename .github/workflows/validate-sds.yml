@@ -91,33 +91,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ **SDS Compliance Check Failed**
-
-Your skill is missing one or more required SDS components.
-
-**Required components (all 13 must be present):**
-1. Metadata
-2. Identity
-3. Knowledge Taxonomy
-4. Capability Boundaries
-5. Decision Engine
-6. Constraint Matrix
-7. Failure Mode Library
-8. Quality Gates
-9. Output Templates
-10. Ethical Constraint Layer
-11. Safety Layer
-12. Collaboration Contract
-13. Validation Record
-
-**Why this matters:** Every skill must conform to the 13-component SDS. This is the governance contract that ensures all skills are auditable, composable, and reliable.
-
-**How to fix:**
-- Run \`SKILL-CREATOR.md\` through Claude using the 10-phase process
-- Ensure all 13 component sections are present with \`##\` markdown headers
-- See \`SKILL-DEFINITION-STANDARD.md\` for examples
-
-For detailed help, see \`CONTRIBUTING.md\`.`
+              body: "❌ **SDS Compliance Check Failed**\n\nYour skill is missing one or more required SDS components.\n\n**Required components (all 13 must be present):**\n1. Metadata\n2. Identity\n3. Knowledge Taxonomy\n4. Capability Boundaries\n5. Decision Engine\n6. Constraint Matrix\n7. Failure Mode Library\n8. Quality Gates\n9. Output Templates\n10. Ethical Constraint Layer\n11. Safety Layer\n12. Collaboration Contract\n13. Validation Record\n\n**Why this matters:** Every skill must conform to the 13-component SDS. This is the governance contract that ensures all skills are auditable, composable, and reliable.\n\n**How to fix:**\n- Run `SKILL-CREATOR.md` through Claude using the 10-phase process\n- Ensure all 13 component sections are present with `##` markdown headers\n- See `SKILL-DEFINITION-STANDARD.md` for examples\n\nFor detailed help, see `CONTRIBUTING.md`."
             })
 
       - name: Comment on PR if validation passes
@@ -129,7 +103,5 @@ For detailed help, see \`CONTRIBUTING.md\`.`
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `✅ **SDS Compliance Check Passed**
-
-Your skill meets all 13 SDS component requirements. Ready for functional testing.`
+              body: "✅ **SDS Compliance Check Passed**\n\nYour skill meets all 13 SDS component requirements. Ready for functional testing."
             })
