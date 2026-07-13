@@ -1,11 +1,17 @@
 # SkillOS — Session Context for AI Coding Tools
 
-Feed this file to Codex CLI (or any AI coding tool) at the start of
-every automation session. It prevents re-explaining the project each time.
+Feed this file to any AI coding tool at the start of every automation session.
+It prevents re-explaining the project and ensures correct file operations.
 
 ```bash
+# Claude Code / terminal agent usage
+cat context.md | claude "Your task here"
+
 # Codex CLI usage
 codex --context "$(cat context.md)" "[your task]"
+
+# OpenCode usage
+opencode --system "$(cat context.md)" "[your task]"
 ```
 
 ---
@@ -33,36 +39,40 @@ skillOS/
 │
 ├── registry/
 │   ├── tier-0/                    ← Foundational disciplines
-│   │   └── software-architect-v1.0.0.md
+│   │   └── software-architect-v1.0.1.md   ← v1.0.1: observability fix
 │   ├── tier-1/                    ← Domain specialists
 │   │   └── frontend-specialist-v1.0.0.md
 │   ├── tier-2/                    ← Technology experts
 │   │   └── react-expert-v1.0.0.md
-│   ├── tier-3/                    ← Pattern specialists (empty — v2.0)
-│   └── tier-4/                    ← Orchestration (empty — v2.0)
+│   ├── tier-3/                    ← Pattern specialists
+│   └── tier-4/                    ← Orchestration
 │
 └── validation/
-    └── test-harness.md            ← Three tests every skill must pass
+    └── test-harness.md            ← Standardized tests every skill must pass
 ```
 
 ---
 
-## Current Status
+## Current Status (July 2026)
 
-**Version:** v1.0 — Foundation complete
-**Phase:** Pre-launch — validation tests pending; GitHub push pending
+**Version:** v1.1 — Foundation complete, refinement in progress
 
-**What exists:**
-- SKILL-DEFINITION-STANDARD.md — complete, 13 components defined
-- SKILL-CREATOR.md — complete, 10-phase compiler system prompt
-- 3 pilot skills — generated, validation tests not yet run
-- test-harness.md — complete, test prompts written
+**Completed (v1.0):**
+- SKILL-DEFINITION-STANDARD.md — 13 components, fully specified
+- SKILL-CREATOR.md — 10-phase compiler system prompt
+- 3 pilot skills — generated and validated
+- validation/test-harness.md — three-test standard
+- Validation run: 7/9 PASS, 92% SDS compliance (Haiku graceful degradation test)
+- GitHub Actions SDS compliance validator on PRs
+- Observability fix applied: Software Architect upgraded to v1.0.1 (13/13 SDS)
+- README funding links live
+- context.md session file for AI coding tools
 
-**What's pending:**
-- Run validation tests on 3 pilot skills (manual — requires human judgment)
-- Record pass/fail in each skill's Component 13 (Validation Record)
-- Push to GitHub
-- Set up GitHub Actions for automated SDS compliance on PRs
+**In progress (v1.1 backlog):**
+- Assumption Documentation Template (converts 2 CONDITIONAL → 2 PASS)
+- Cross-Tier Routing Map (Tier 0 → 1 → 2 handoff documentation)
+- Testing Strategy Formalization (Tier 0 and Tier 1 testing guidance)
+- Cross-model validation on pilot skills (Tier 1 model results recorded)
 
 ---
 

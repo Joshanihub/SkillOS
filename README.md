@@ -76,7 +76,7 @@ skillOS/
 │
 ├── registry/
 │   ├── tier-0/                    ← Foundational disciplines
-│   │   └── software-architect-v1.0.0.md
+│   │   └── software-architect-v1.0.1.md   ← v1.0.1: observability fix
 │   ├── tier-1/                    ← Domain specialists
 │   │   └── frontend-specialist-v1.0.0.md
 │   ├── tier-2/                    ← Technology experts

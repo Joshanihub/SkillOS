@@ -57,6 +57,8 @@ validation-output/
 *.session
 .tmp/
 temp/
+.copilot/
+.copilot-session/
 
 # Generated documentation (if auto-generated)
 dist-docs/
