@@ -52,6 +52,9 @@ SkillOsTests/
 test-output/
 validation-output/
 
+# Update tracking (excluded from commits, local development only)
+SkillOsUpdates/
+
 # Session/temporary files
 .session
 *.session
@@ -142,3 +145,5 @@ plan.local.md
 # !.gitkeep
 # !registry/
 # !.github/
+
+/PHASE-1-COMPLETION.md

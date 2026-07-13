@@ -83,6 +83,15 @@ Examples:
 
 Uncertain about tier? Look at the Tier System section in README.md or ask in your PR.
 
+**Routing Coordination:**
+When placing your skill, define how it routes to and receives from other skills. See \docs/CROSS-TIER-ROUTING-MAP.md\ for examples of:
+- When to route upstream (from Tier 2 → Tier 1 → Tier 0)
+- When to route laterally (Tier 1 ↔ Tier 1)
+- What information passes in each direction (Collaboration Contract)
+- Real workflow examples
+
+Your skill's Component 12 (Collaboration Contract) must align with the routing map.
+
 ### Step 4 — Submit
 
 Open a PR (Pull Request) with:
