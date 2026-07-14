@@ -55,7 +55,7 @@ skillOS/
 
 ## Current Status (July 2026)
 
-**Version:** v1.1 — Foundation complete, refinement in progress
+**Version:** v1.1 — Refinement phase complete (92%), Ready for v2.0 launch
 
 **Completed (v1.0):**
 - SKILL-DEFINITION-STANDARD.md — 13 components, fully specified
@@ -64,15 +64,23 @@ skillOS/
 - validation/test-harness.md — three-test standard
 - Validation run: 7/9 PASS, 92% SDS compliance (Haiku graceful degradation test)
 - GitHub Actions SDS compliance validator on PRs
-- Observability fix applied: Software Architect upgraded to v1.0.1 (13/13 SDS)
+- Software Architect v1.0.3: observability fix applied, 13/13 SDS
+- Frontend Specialist v1.0.1, React Expert v1.0.1, Security Principles v1.0.0 — stable
 - README funding links live
 - context.md session file for AI coding tools
 
-**In progress (v1.1 backlog):**
-- Assumption Documentation Template (converts 2 CONDITIONAL → 2 PASS)
-- Cross-Tier Routing Map (Tier 0 → 1 → 2 handoff documentation)
-- Testing Strategy Formalization (Tier 0 and Tier 1 testing guidance)
-- Cross-model validation on pilot skills (Tier 1 model results recorded)
+**Completed (v1.1 — Refinement):**
+✅ Assumption Documentation Template — standardizes ambiguity handling
+✅ Cross-Tier Routing Map — documents Tier 0→1→2 handoffs
+✅ Testing Strategy Formalization — tier-specific test protocols + quality gates
+✅ Phase 1 → Phase 2 Transition Report — readiness assessment for v2.0
+✅ Rebuild Security Principles (Tier 0) — 417 lines, 13/13 SDS compliance
+
+**Next (v2.0 — Registry Launch):**
+⏳ Generate 3 new Tier 1 skills: Backend Specialist, Database Specialist, DevOps Specialist
+⏳ Community infrastructure: GitHub templates, issue templates, good first issues
+⏳ Project Rules Engine: documentation + fork examples
+⏳ Cross-model validation on pilot skills (Tier 1 models): GPT-5.5, Gemini 3.5 Pro
 
 ---
 

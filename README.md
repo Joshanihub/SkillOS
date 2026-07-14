@@ -90,27 +90,94 @@ skillOS/
 
 ---
 
-## Architecture
+## What SkillOS Is
 
-SkillOS is built in three layers. They are independent and can be
-adopted incrementally.
+SkillOS is the missing execution layer between humans, AI models, tools, workflows,
+and autonomous agents. It standardizes how AI systems interact with human knowledge
+the same way operating systems standardized how software interacts with hardware.
 
-**Layer 1 — Skill Registry** *(live now)*
-GitHub-hosted, MIT licensed, community-contributed. Versioned skill
-definitions conforming to the SDS. Works on any AI interface today.
+**Knowledge tells AI what exists.**
+**Skills teach AI how to execute.**
+**Agents determine who performs the work.**
+**Models provide the intelligence.**
+**SkillOS orchestrates everything.**
 
-**Layer 2 — Skill Runtime** *(v3.0 roadmap)*
-A Model Context Protocol (MCP) server that exposes skills as activatable
-tools. Users connect once and get access to the entire registry —
-composable, versioned, callable by name. MCP is an open standard supported
-natively by Claude and a growing number of AI interfaces. This is buildable
-today and is the technology that turns the registry into a connectable
-application.
+---
 
-**Layer 3 — Skill Marketplace** *(v5.0 roadmap)*
-A web interface for browsing, testing, forking, and contributing skills.
-Think npm but for AI agent behaviors. Community ratings, premium vertical
-skills for regulated industries, enterprise packs with compliance templates.
+## The Eight-Layer Architecture
+
+SkillOS is built as eight connected layers. Each layer is independently useful
+and progressively enables more powerful AI-assisted work.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  JUDGMENT LAYER    Business context · Risk · Approvals  │
+├─────────────────────────────────────────────────────────┤
+│  MEMORY LAYER      Project knowledge · Agent context    │
+├─────────────────────────────────────────────────────────┤
+│  AGENT LAYER       Multi-agent coordination             │
+├─────────────────────────────────────────────────────────┤
+│  WORKFLOW LAYER    Skills chained into full pipelines   │
+├─────────────────────────────────────────────────────────┤
+│  SKILL LAYER  ←    SDS · Skill Creator · Registry       │
+│  LIVE NOW          The foundation everything builds on  │
+├─────────────────────────────────────────────────────────┤
+│  TOOL LAYER        MCP servers · APIs · IDEs · Cloud    │
+├─────────────────────────────────────────────────────────┤
+│  VALIDATION LAYER  Continuous quality evaluation        │
+├─────────────────────────────────────────────────────────┤
+│  MODEL LAYER       Model-agnostic execution marketplace │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Build once. Execute anywhere. Improve continuously.**
+**Own the workflow — not the model.**
+
+---
+
+## Platform Components
+
+**Skill Layer** — What's live now. Reusable AI skills containing instructions,
+workflows, reasoning patterns, validation criteria, templates, and execution metadata.
+Any domain: software architecture, UI design, medical documentation, financial analysis,
+legal review, marketing, research, data engineering, cybersecurity, and more.
+
+**Workflow Layer** — Skills chained into complete production pipelines.
+Research → Plan → Design → Build → Test → Deploy → Monitor.
+Rather than isolated prompts, SkillOS executes complete workflows.
+
+**Agent Layer** — Multiple AI agents collaborating using skills.
+Architect, Engineer, Designer, Researcher, Reviewer, Tester, Security Auditor,
+Product Manager, Technical Writer — each specializing while SkillOS coordinates.
+
+**Model Layer** — Completely model-agnostic. Generate with Claude. Review with GPT.
+Optimize with Gemini. Verify with open-source. Skills outlive models.
+
+**Tool Layer** — Skills invoke external capabilities through MCP servers, APIs,
+databases, IDEs, browsers, cloud providers, GitHub, Figma, Notion, Slack,
+Google Workspace, Microsoft 365, and enterprise systems.
+
+**Validation Layer** — Execution quality continuously evaluated: correctness,
+completeness, security, performance, consistency, compliance, user satisfaction.
+Skills improve through measurable feedback rather than prompt tweaking.
+
+**Memory Layer** — Projects maintain persistent knowledge. Skills maintain execution
+methodology. Agents maintain working context. Enables long-running autonomous work
+with human oversight.
+
+**Judgment Layer** — The distinction between "technically correct" and "production ready."
+Incorporates business context, user intent, domain expertise, risk analysis, ethics,
+scalability, and operational constraints. AI produces possibilities — Judgment
+determines what should actually be shipped.
+
+**Project Rules** — A project's constitution. Every project has configurable standards
+every skill and agent must follow: coding standards, architecture principles, naming
+conventions, testing requirements, security policies, design systems, compliance rules.
+Auto-generated from project type with full manual override.
+
+**Agent as a Service (AaaS)** — Organizations assemble AI workforces using skills.
+Agent teams plan, research, design, develop, review, deploy, operate, monitor, and improve.
+Humans handle strategy, approvals, and high-impact decisions.
 
 ---
 
@@ -216,10 +283,7 @@ Not AWS. Not US-timezone deployment. Not high-bandwidth internet.
 Not English-language variable names.
 
 **No default team culture.**
-A Japanese engineering team values explicit consensus documentation.
-A US startup values speed and iteration.
-A German enterprise values formal specification.
-Skills adapt to the context provided, not to cultural assumptions.
+Skills adapt communication style to the context provided.
 
 **No default AI platform.**
 No model vendor is privileged. The standard works on any model
@@ -227,97 +291,139 @@ capable of following complex instructions.
 
 **Ethics is infrastructure.**
 It runs before output generation, not as a final checkbox.
-Every skill has domain-specific ethical constraints, not just the
-universal three rules. A marketing skill's ethics differ from a
-security skill's ethics.
 
 **Safety is distinct from security.**
 Security: auth, encryption, injection prevention.
-Safety: data minimalism, reversibility awareness, blast radius,
-downstream impact on real people who are not in the conversation.
+Safety: data minimalism, reversibility, blast radius,
+downstream impact on real people not in the conversation.
 
 ---
 
-## Recommended Models
+## Recommended Models (July 2026)
 
-SkillOS favors no vendor. These are the models the community has
-validated as capable of producing reliable skill output as of July 2026.
-The list is maintained by contributors — add your findings to the registry.
+SkillOS favors no vendor. These are community-validated recommendations.
+The 2026 landscape has no single best model — only the best model for
+a given job. This table is maintained by contributors; update via PR.
 
-The most important insight from 2026 benchmarks: **there is no single
-best model — only the best model for a given job.**
-
-**Frontier — Skill Creator (complex multi-phase generation):**
+**Tier 1 — Skill Creator (complex multi-phase generation):**
 
 | Model | Provider | Strength | Best For |
 |---|---|---|---|
-| Claude Fable 5 | Anthropic | SWE-Bench Pro leader (80.3%); strongest on long-horizon agentic coding | Skill generation, code-heavy skills |
-| Claude Opus 4.8 | Anthropic | Overall Intelligence Index leader (61.4); best coding reliability | Production skill use, agentic workflows |
-| GPT-5.5 | OpenAI | Best all-rounder; leads ARC-AGI-2 reasoning (85.0%); largest ecosystem | General skill generation, writing-heavy skills |
-| Gemini 3.1 Pro / 3.5 Pro | Google | Leads GPQA Diamond reasoning (94.3%); 2M token context window | Research skills, multilingual, document-heavy |
+| Claude Fable 5 | Anthropic | SWE-Bench Pro leader (80.3%); best long-horizon agentic coding | Code-heavy skills, agentic workflows |
+| Claude Opus 4.8 | Anthropic | Intelligence Index leader (61.4); most reliable on complex prompts | Production skill use, highest precision |
+| GPT-5.5 | OpenAI | Best all-rounder; leads ARC-AGI-2 reasoning (85.0%) | General skill generation, writing-heavy skills |
+| Gemini 3.1 / 3.5 Pro | Google | Leads GPQA Diamond (94.3%); 2M token context | Research skills, multilingual, document-heavy |
 | Grok 4.3 | xAI | Competitive benchmarks; real-time web/social context | Skills needing live data |
-| Mistral Large | Mistral AI | Strong European regulatory coverage; open-weight option | GDPR-context skills, self-hosted deployments |
+| Mistral Large | Mistral AI | Strong EU regulatory coverage; open-weight option | GDPR-context skills, self-hosted deployments |
+| DeepSeek V4 | DeepSeek | Open-weight; near-frontier code reasoning; cheapest self-hosted | Cost-sensitive or privacy-first deployments |
 
-**Strong value — functional for both generation and use:**
-
-| Model | Provider | Notes |
-|---|---|---|
-| Claude Sonnet 5 | Anthropic | Near-Opus intelligence at Sonnet cost; best daily-driver |
-| GPT-5 mini | OpenAI | High-volume tasks at low cost |
-| Gemini 3.5 Flash | Google | Cheapest capable option at $1.50/$9 per MTok |
-| DeepSeek V4 | DeepSeek | Open-weight; exceptional code reasoning; cheapest frontier-class |
-| Kimi K2 | Moonshot AI | 99.1% AIME; best quality-per-dollar in reasoning |
-
-**Open-source / self-hostable (privacy-sensitive deployments):**
+**Tier 2 — Strong value (generation and daily use):**
 
 | Model | Provider | Notes |
 |---|---|---|
-| Llama 4 | Meta | Fully open; strong for regulated environments needing self-hosting |
-| Qwen 2.5 / 3 | Alibaba | Outstanding multilingual; best for Asian-language deployments |
-| DeepSeek R1 | DeepSeek | MIT license; self-hostable; near-frontier reasoning |
-| Gemma 3 | Google | Lightweight; deployable on consumer hardware |
+| Claude Sonnet 5 | Anthropic | Near-Opus intelligence at Sonnet cost; best daily driver |
+| GPT-5.5 mini / GPT-5.6 Sol | OpenAI | High-volume tasks; GPT-5.6 now powers OpenAI Codex |
+| Gemini 3.5 Flash | Google | Default in Antigravity 2.0; ~289 tokens/sec; cheapest capable frontier |
+| Kimi K2 | Moonshot AI | Best quality-per-dollar in reasoning tasks |
 
-**Community note:** If you validate a skill on a model not listed here,
-add your findings to the skill's Validation Record. Add a row to this
-table via PR. The community benefits from knowing which models produce
-reliable output for which skill types.
+**Tier 3 — Skill consumption (degraded on Skill Creator generation):**
+Llama 4, Qwen 3, Gemma 3, smaller Mistral variants, Claude Haiku 4.5.
+Generated skills run on these — useful for graceful degradation testing
+and resource-constrained environments. Use Tier 1 or 2 for generating skills.
+
+**Validation note:** Cross-model testing is strongly encouraged. If you validate
+a skill on any model, add results to the skill's Validation Record.
+Tier 3 validation confirms graceful degradation. Tier 1 validation confirms
+production readiness. Skills should ideally be tested on both.
 
 ---
 
-## Recommended Build Tools
+## Recommended Build Tools (July 2026)
 
-Different phases of SkillOS development call for different tools.
-No single tool owns all phases.
+The AI coding tool landscape has four distinct categories in 2026.
+SkillOS work spans multiple categories depending on the phase.
+No single tool owns everything — use the right tool for the task.
 
-**Codex CLI (OpenAI) — Use from v1.0 through v2.0**
-Terminal-native coding agent powered by o4-mini and GPT-5 variants.
-Open-source. Lives entirely in your shell. Reads and writes files,
-executes sandboxed shell commands, handles Git operations natively.
+---
 
-Use Codex for:
-- Initializing the GitHub repo and directory structure
-- Automating validation test recording into Markdown files
-- Writing GitHub Actions workflows for SDS compliance checking on PRs
-- Any CI/CD, registry automation, or file-manipulation task
-- Scripted batch operations across multiple skill files
+### Category 1 — Terminal Agents
+*Best for SkillOS registry work: file operations, Git, CI/CD, automation.*
 
-**Google Antigravity — Use from v4.0 onward**
-Agent-first IDE (VS Code fork) with parallel orchestration of up to
-five autonomous AI agents via the Manager View. Built-in Chrome browser
-lets agents spin up localhost, interact with UI elements, and visually
-verify changes before presenting a diff.
+| Tool | Provider | Access | Best For |
+|---|---|---|---|
+| **Claude Code** | Anthropic | CLI · Desktop · IDE extension | Best overall reasoning; repo context; MCP-native; scripts and automation |
+| **OpenAI Codex** | OpenAI | CLI · Desktop App · IDE extension | Open-source CLI; GPT-5.6 powered; parallel cloud agents; ChatGPT ecosystem |
+| **OpenCode** | Community | CLI | Open-source; model-agnostic; use any API; no vendor lock-in |
+| **Aider** | Community | CLI | Lightweight; Git-native commits; excellent for focused file edits |
+| **Gemini CLI / Antigravity CLI** | Google | CLI | New Go-based CLI replacing Gemini CLI; fast; Gemini 3.5 Flash powered |
 
-Use Antigravity for:
-- Building the web platform for browsing and testing skills (v4.0)
-- Parallel agent workflows: one agent refining the skill browser UI
-  while another visually verifies component output in Chrome
-- Full-stack feature development once the platform layer exists
-- Any task where visual verification and parallel orchestration matter
+**For SkillOS through v2.0:** Any terminal agent works. Claude Code is strongest
+on complex reasoning; Codex CLI/Desktop is best if you are in the OpenAI ecosystem;
+OpenCode is the right choice if you want model-agnostic open-source tooling.
 
-**Decision rule:** If the task is terminal-native (files, Git, CI),
-use Codex CLI. If the task is visual and benefits from parallel agents
-and a browser, use Antigravity. Before v4.0, Codex CLI handles
-everything. Antigravity before that point is overkill.
+---
+
+### Category 2 — AI IDEs
+*Best for SkillOS from v4.0 when building the web platform.*
+
+| Tool | Provider | Agents | Best For |
+|---|---|---|---|
+| **Cursor** | Anysphere | Up to 8 parallel (v2.0) | Best all-round AI IDE; most widely adopted; strong single-session work |
+| **Antigravity 2.0** | Google | Up to 5 parallel | Built-in Chrome browser; visual verification; Gemini 3.5 Flash default |
+| **Devin Desktop** | Cognition | Async cloud agents | Formerly Windsurf; rebranded June 2026; supports ACP open protocol |
+| **Zed** | Zed Industries | Agent mode | Fast open-source editor; free; works well alongside terminal agents |
+| **Kiro** | Amazon | Agent mode | AWS-ecosystem integration; strong for teams on AWS infrastructure |
+| **JetBrains AI** | JetBrains | Assistant | Built-in to JetBrains IDEs; free tier available |
+
+**For SkillOS v4.0+ (web platform):** Cursor or Antigravity 2.0 for parallel agent
+work. Cursor leads on versatility; Antigravity leads on visual browser verification.
+Devin Desktop (formerly Windsurf) is worth watching for its ACP open protocol support.
+
+---
+
+### Category 3 — Visual Workspaces
+*For managing multiple agent sessions and reviewing diffs at scale.*
+
+| Tool | Provider | Notes |
+|---|---|---|
+| **Claude Code Desktop** | Anthropic | Free with Claude subscription; wraps Claude Code with visual interface |
+| **Codex Desktop App** | OpenAI | Desktop GUI for Codex; visual diff review |
+| **Nimbalyst** | Community | Open-source; model-agnostic; parallel session management; free for individuals |
+
+---
+
+### Category 4 — Cloud Agents
+*For delegated long-running tasks without a local environment.*
+
+| Tool | Provider | Notes |
+|---|---|---|
+| **Devin** | Cognition | Autonomous PR creation; long-running tasks; browser-equipped |
+| **Replit Agent** | Replit | Browser-based; best for prototyping without local setup |
+
+---
+
+### Tool Decision Guide for SkillOS Contributors
+
+```
+Task: Registry work (skill files, Git, CI, validation recording)
+→ Use any terminal agent: Claude Code, Codex CLI, OpenCode, or Aider
+→ Feed context.md at the start of every session
+
+Task: Skill generation via Skill Creator
+→ Use any capable AI interface with the SKILL-CREATOR.md system prompt
+→ Tier 1 models recommended for generation quality
+
+Task: Web platform development (v4.0+)
+→ Use Cursor or Antigravity 2.0 for parallel agent work
+→ Built-in browser verification matters here
+
+Task: Contributing without a local dev environment
+→ Use Replit Agent or GitHub Codespaces with any terminal agent
+
+Task: Testing skill output across models
+→ Run the validation harness on your preferred interface
+→ Record results in the skill's Component 13 Validation Record
+```
 
 ---
 
@@ -337,31 +443,40 @@ NEVER                       → Block indefinitely waiting for perfect informati
 
 ## Roadmap
 
-**v1.0 — Foundation** *(current)*
+**v1.0 — Foundation** *(complete)*
 - [x] Skill Definition Standard (13 components)
 - [x] Skill Creator compiler (10-phase generation)
 - [x] 3 pilot skills: Software Architect, Frontend Specialist, React Expert
 - [x] Validation test harness
-- [ ] Validation tests run and recorded on pilot skills
-- [ ] GitHub repo launch
+- [x] Validation tests run (7/9 PASS, 92% SDS compliance)
+- [x] GitHub Actions: SDS compliance validator on PRs
+- [x] context.md session file for AI coding tools
+- [x] Observability gap fixed (Software Architect v1.0.1 — now 13/13 SDS compliance)
+- [x] GitHub repo live
 
-**v2.0 — Registry**
-- [ ] 20+ skills across all tiers
-- [ ] Community contribution pipeline
-- [ ] GitHub Actions: automated SDS compliance check on every PR
-- [ ] `context.md` session file for AI coding tools
+**v1.1 — Refinement** *(complete)*
+- [x] Assumption Documentation Template (converts 2 CONDITIONAL → 2 PASS)
+- [x] Cross-Tier Routing Map (Tier 0 → 1 → 2 handoff documentation)
+- [x] Testing Strategy Formalization (Tier 0 and Tier 1 testing guidance)
+- [x] Cross-model validation on pilot skills (Tier 1 model results recorded)
+
+**v2.0 — Registry** *(in progress)*
+- [ ] 20+ skills across all tiers (4/20 complete)
+- [x] Rebuilt Security Principles (Tier 0) to 13/13 SDS compliance & validated (3/3 PASS)
+- [ ] Community contribution pipeline mature
+- [x] Automated SDS compliance check live in GitHub Actions
 
 **v3.0 — Runtime**
 - [ ] MCP server exposing skills as activatable tools
 - [ ] Multi-skill orchestration with typed context handoffs
-- [ ] Context handoff protocol between specialists
 - [ ] Skills callable by name from any MCP-compatible interface
 
-**v4.0 — Platform** *(Antigravity phase begins here)*
+**v4.0 — Platform**
 - [ ] Web interface for browsing, searching, and testing skills
 - [ ] Community ratings and reviews
 - [ ] Skill versioning dashboard
 - [ ] Visual skill composition tool
+- [ ] Parallel agent development begins (Cursor or Antigravity 2.0)
 
 **v5.0 — Ecosystem**
 - [ ] Marketplace: open-source core + premium vertical skills
@@ -400,30 +515,29 @@ SkillOS is community-maintained and free forever. If it saves you time,
 helps your team, or advances a project you care about — consider supporting it.
 
 **Fund the project:**
-- [GitHub Sponsors](https://github.com/sponsors) — support individual
-  maintainers directly; appears on contributor profiles
-- [Open Collective](https://opencollective.com) — transparent community
-  fund where all income and spending is publicly visible; preferred for
-  community infrastructure costs (hosting, CI, domain)
+- [GitHub Sponsors](https://github.com/sponsors/joshuamwangangi) — support
+  the maintainer directly; appears on your GitHub profile
+- [Open Collective](https://opencollective.com/skillos) — transparent community
+  fund; all income and spending publicly visible; preferred for infrastructure
 
 **Why funding matters:**
-This project has real operational constraints. Validation testing across
-multiple AI models has a cost. CI infrastructure has a cost. The people
-who maintain the standard and review contributions deserve support.
-Funding doesn't change who owns the project — the world still owns it.
-It changes whether the people maintaining it can sustain that work.
+Validation testing across multiple AI models has a cost. CI infrastructure
+has a cost. The people who maintain the standard and review contributions
+deserve support. Funding does not change who owns the project — the world
+still owns it. It changes whether the people maintaining it can sustain
+that work long-term.
 
 **Contribute without code or money:**
-- Run validation tests on existing skills and submit the results
-- Add regional regulatory guidance not yet covered in the Constraint Matrix
+- Run validation tests on existing skills and submit results
+- Add regional regulatory guidance not yet covered
 - Translate skills or README content into other languages
 - Report skills that produce incorrect or outdated output
 - Write tutorials, examples, or integration guides
-- Share the project — awareness is its own contribution
+- Update model or tool recommendations as the landscape shifts
 
 **Compute contributions:**
-If you have access to compute you can share for multi-model validation
-testing, open an issue on GitHub with the label `compute-offer`.
+If you have access to compute for multi-model validation testing,
+open an issue with the label `compute-offer`.
 
 ---
 
@@ -432,8 +546,8 @@ testing, open an issue on GitHub with the label `compute-offer`.
 MIT — because this belongs to everyone.
 
 Attribution is required in forks. Not for ownership — for traceability.
-When a skill gets forked and modified, knowing its lineage helps
-future contributors understand what changed and why.
+When a skill gets forked and modified, its lineage helps future
+contributors understand what changed and why.
 
 ---
 
@@ -451,4 +565,4 @@ No single assistant, company, or region owns this. That's the point.
 
 ---
 
-*SkillOS v1.0 · MIT License · Built for the world*
+*SkillOS v1.1 · MIT License · Built for the world*

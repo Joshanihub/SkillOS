@@ -126,6 +126,18 @@ TODO-PERSONAL.md
 .plan/
 plan.local.md
 
+# Project Transition, Checklists, Status, and Session Files
+PHASE-*-COMPLETION.md
+PHASE-*-SUMMARY.txt
+PHASE-*-TRANSITION.md
+PHASE-*-VALIDATION-GUIDE.md
+PROJECT-STATUS.md
+SESSION-SUMMARY.md
+NEXT-SESSION-CHECKLIST.md
+DOCUMENTS-INDEX.md
+test-harness.md
+
+
 ### Archives & Compressed Files ###
 *.zip
 *.tar
