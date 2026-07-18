@@ -1,0 +1,158 @@
+name: New Skill Proposal
+description: Propose a new skill for the SkillOS registry. Use this before starting to build — it prevents overlap with existing skills and gets early feedback on your approach.
+title: "[SKILL PROPOSAL] Skill name (Tier N)"
+labels: ["skill-proposal", "community"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you build, propose. This template helps ensure:
+        - Your skill doesn't duplicate an existing skill's capability boundaries
+        - The tier placement is correct
+        - The domain has enough distinct failure modes to justify its own skill
+        - The community can give early feedback before you invest time generating it
+
+        A proposal does not need to be complete — it is the start of a conversation.
+
+  - type: input
+    id: skill_name
+    attributes:
+      label: Proposed Skill Name
+      placeholder: "e.g. Python Specialist, Legal Document Reviewer, Marketing Copywriter"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Proposed Tier
+      description: Which tier does this skill belong in?
+      options:
+        - "Tier 0 — Foundational discipline (all other skills inherit from this)"
+        - "Tier 1 — Domain specialist (broad engineering or business domain)"
+        - "Tier 2 — Technology expert (specific framework, language, or tool)"
+        - "Tier 3 — Pattern specialist (specific implementation pattern)"
+        - "Tier 4 — Orchestration (routing, planning, memory)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem This Skill Solves
+      description: What specific problem does this skill solve? Who is it for?
+      placeholder: |
+        Example: "Teams building Python data pipelines spend significant time debugging pandas
+        memory issues and getting inconsistent advice about vectorization. A Python Specialist
+        skill with explicit NumPy/pandas failure modes would reduce this."
+    validations:
+      required: true
+
+  - type: textarea
+    id: domain_map
+    attributes:
+      label: Domain Map (Key Topics)
+      description: What are the 5-10 most important topics this skill covers?
+      placeholder: |
+        Example for Python Specialist:
+        - Core language features (typing, decorators, generators, async)
+        - Data processing (pandas, NumPy, polars)
+        - Testing (pytest, hypothesis)
+        - Packaging (pip, poetry, uv)
+        - Performance profiling
+        - Memory management
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing_overlap
+    attributes:
+      label: Overlap Check
+      description: |
+        Which existing skills have the closest capability boundaries to this proposal?
+        What does this skill do that those skills explicitly cannot or should not?
+      placeholder: |
+        Example: "The Backend Specialist covers general API design. The Python Specialist
+        focuses on Python-specific patterns that Backend Specialist routes out (e.g.
+        GIL behavior, asyncio event loops, Pydantic model design)."
+    validations:
+      required: true
+
+  - type: textarea
+    id: failure_modes
+    attributes:
+      label: 5 Domain-Specific Failure Modes
+      description: |
+        Name 5 real failure modes unique to this domain. These must be specific —
+        not generic engineering advice. If you can't name 5 distinct domain-specific
+        failure modes, the skill may not need its own entry.
+      placeholder: |
+        1. [Failure mode name] — [brief description]
+        2. [Failure mode name] — [brief description]
+        3. [Failure mode name] — [brief description]
+        4. [Failure mode name] — [brief description]
+        5. [Failure mode name] — [brief description]
+    validations:
+      required: true
+
+  - type: textarea
+    id: routing
+    attributes:
+      label: Routing Relationships
+      description: Which skills does this skill receive context from? Which skills does it route to?
+      placeholder: |
+        Receives from: [e.g. Software Architect, Backend Specialist]
+        Routes to: [e.g. Testing Specialist, DevOps Specialist]
+        Escalates to: [e.g. Software Architect when architectural decision needed]
+    validations:
+      required: true
+
+  - type: textarea
+    id: ethical_domain
+    attributes:
+      label: Domain-Specific Ethical Constraints
+      description: |
+        What ethical risks are specific to this domain?
+        (Beyond the universal three rules every skill has)
+      placeholder: |
+        Example for Marketing Copywriter:
+        - No dark patterns in recommended copy
+        - No manufactured urgency
+        - No deceptive social proof
+    validations:
+      required: true
+
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Primary Industry Vertical(s)
+      description: Which industry verticals does this skill serve?
+      multiple: true
+      options:
+        - Software Engineering (general)
+        - Healthcare
+        - Finance / Fintech
+        - Legal
+        - Education
+        - Marketing / Advertising
+        - Government / Public Sector
+        - Cybersecurity
+        - Manufacturing
+        - Research / Science
+        - Media / Content
+        - E-commerce / Retail
+        - Other (specify in description)
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-Proposal Checklist
+      options:
+        - label: I searched existing skills and confirmed there is no significant capability overlap
+          required: true
+        - label: I can name at least 15 domain-specific failure modes (5 listed above are a sample)
+          required: true
+        - label: This skill can be used by people in any country, not just one region
+          required: true
+        - label: I am prepared to write or generate this skill if the proposal is approved
+          required: false

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question or start a discussion
+    url: https://github.com/Joshani/SkillOS/discussions
+    about: Please ask questions or start general discussions here instead of opening a blank issue.

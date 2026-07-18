@@ -1,197 +1,101 @@
 # SkillOS Changelog
+## Permanent record of all implemented changes across versions.
+## This file IS committed to the repository.
+## SkillUpdates.md (gitignored) is the scratch space; this is the truth.
 
-All notable changes to the SkillOS project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/),
-and this project adheres to [Semantic Versioning](https://semver.org/).
-
----
-
-## [1.0.0] - 2026-07-12
-
-### Initial Release 🎉
-
-**SkillOS v1.0 Foundation Launch**
-
-#### Added
-
-- **Skill Definition Standard (SDS):** 13-component governance framework for AI skills
-  - Purpose & Scope definition
-  - Success criteria specification
-  - Decision engine architecture
-  - Assumption management layer
-  - Error handling protocols
-  - Boundary definitions
-  - Accessibility requirements (WCAG)
-  - Performance specifications
-  - Testing strategy framework
-  - Type safety enforcement
-  - Documentation standards
-  - Ethical constraint layer
-  - Collaboration contracts
-
-- **Skill Creator Compiler:** Automated skill generation tool
-  - 10-phase compilation pipeline
-  - Domain cartography analysis
-  - Problem taxonomy generation
-  - Decision engine construction
-  - Constraint matrix building
-  - Ethical constraint encoding
-  - Validation harness creation
-  - Documentation generation
-  - Version management
-  - Registry integration
-
-- **Three Pilot Skills (Tier 0-2):**
-  - Tier 0: Software Architect (system design expertise)
-  - Tier 1: Frontend Specialist (accessibility-first frontend)
-  - Tier 2: React Expert (modern React patterns)
-  - All validated and production-ready
-
-- **Tiered Registry System:**
-  - Tier 0: Strategic/architectural skills
-  - Tier 1: Foundational/domain skills
-  - Tier 2: Specialized/implementation skills
-  - Tier 3: Emerging/experimental skills (reserved)
-  - Tier 4: Community/ecosystem skills (reserved)
-
-- **Comprehensive Documentation:**
-  - README with complete vision and architecture
-  - Contributing guidelines with cross-model validation
-  - Testing harness framework
-  - Context file for CLI session management
-  - Skill creator documentation with model guidance
-
-- **Quality Infrastructure:**
-  - GitHub Actions SDS validator (automatic PR compliance checks)
-  - 13-component validation on every contribution
-  - Automated PR comments with pass/fail status
-  - Validation harness for testing skills
-
-- **Open Source Foundation:**
-  - MIT License
-  - Community Code of Conduct
-  - Contribution guidelines
-  - GitHub repository (public)
-
-#### Validated
-
-- Software Architect: 2/3 PASS, 1/3 CONDITIONAL ✓
-- Frontend Specialist: 3/3 PASS ⭐
-- React Expert: 2/3 PASS, 1/3 CONDITIONAL ✓
-- Overall SDS Compliance: 92% (12/13 components)
-
-#### Fixed
-
-- None (initial release)
+Format: newest entries at the top.
 
 ---
 
-## [1.1.0] - Planned (Post-Release Backlog)
+## [v2.0.0-beta] — 2026-07-18
 
-### Planned Improvements
+### Added — Phase 2.1 New Skills (10-skill threshold reached)
+- `registry/tier-0/systems-thinking-v1.0.0.md` — compiled via Skill Creator v1.1. Conway's Law, Team Topologies, systemic failure modes (distributed monolith, resume-driven development, Goodhart's Law), 15 domain-specific failure modes, 4 output templates (trade-off analysis, socio-technical map, system dynamics map, root cause analysis).
+- `registry/tier-1/ml-ai-specialist-v1.0.0.md` — compiled via Skill Creator v1.1. RAG architectures (chunking, hybrid retrieval, re-ranking), agent topologies, LLMOps evaluation pipelines, 10 domain-specific failure modes (blind top-K, prompt drift, indirect prompt injection, ACL bypass in vector DBs).
+- `registry/tier-2/typescript-specialist-v1.0.0.md` — compiled via Skill Creator v1.1. Advanced type theory (discriminated unions, conditional/mapped types), Zod runtime boundary validation, compiler configuration, 10 domain-specific failure modes (the `any` virus, type gymnastics, lying to the compiler with `as Type`).
 
-#### High Priority
-
-- **Assumption Documentation Template**
-  - Standardized format for documenting assumptions
-  - Convert 2 conditional tests to clear passes
-  - Estimated effort: 2-4 hours
-  - Target impact: 100% pass rate on all tests
-
-#### Medium Priority
-
-- **Observability Framework**
-  - Metrics, logging, and alerting guidelines
-  - Integration with architectural responses
-  - Estimated effort: 4-6 hours
-  - Target impact: Improve SDS compliance to 98%
-
-- **Cross-Tier Routing Documentation**
-  - Explicit paths for tier-to-tier collaboration
-  - Examples of Tier 1 → Tier 2 routing
-  - Estimated effort: 2-3 hours
-  - Target impact: Improved skill coordination
-
-#### Low Priority
-
-- **Testing Strategy Formalization**
-  - Tier-specific testing approaches
-  - Testing validation per tier
-  - Estimated effort: 3-4 hours
-  - Target impact: More rigorous validation
+### Added — Phase 2.2 Community Infrastructure
+- `.github/PULL_REQUEST_TEMPLATE.md` — strict SDS enforcement on all contributions: all 13 components, validation model specified, three test results, global defaults checklist, MIT license confirmation
+- `.github/ISSUE_TEMPLATE/bug_report.yml` — structured bug reporting with severity classification, model used, reproduction steps, expected vs actual output
+- `.github/ISSUE_TEMPLATE/new_skill_proposal.yml` — proposal gate with overlap check, 5 failure mode preview, routing relationships, ethical constraints required before building
+- `.github/ISSUE_TEMPLATE/skill_improvement.yml` — SDS component-targeted improvements with regional context field
+- `.github/ISSUE_TEMPLATE/config.yml` — disables blank issues, routes general questions to Discussions
+- `docs/WORKFLOW-EXAMPLES.md` — three complete multi-skill workflows: Full Stack SaaS (construction fintech context), Financial API (Nigeria CBN + NDPR compliance), Legacy Security Audit
+- `docs/INDUSTRY-VERTICALS.md` — 10 industry verticals mapped to base skills + domain-specific skill needs + premium tier opportunities; priority order for next 15 skills
 
 ---
 
-## [2.0.0] - Planned (Q3/Q4 2026)
+## [v1.1.0] — 2026-07-15
 
-### Major Feature: 20-Skill Registry
+### Added
+- `docs/ASSUMPTION-TEMPLATE.md` — standardized assumption documentation template
+  for all skills when handling 50-79% complete requests. Converts CONDITIONAL
+  validation results to PASS by enforcing explicit assumption surfacing.
+- `docs/CROSS-TIER-ROUTING-MAP.md` — explicit routing paths between all skills
+  across tiers. Defines typed handoff fields for Tier 0→1, Tier 1→2,
+  Tier 1↔1, and Tier 1→0 escalation. Foundation for v3.0 Skill Runtime routing.
+- `docs/WORKFLOW-EXAMPLES.md` — three complete multi-skill workflow examples
+  (SaaS product build, API design, security review).
+- `SkillOsTests.md` — structured test scratch file (gitignored).
+- `SkillUpdates.md` — update tracking scratch file (gitignored after implementing).
+- `CHANGELOG.md` — this file. Permanent version history.
+- `MASTER_CONTEXT.md` — complete project context for cross-session continuity.
+- `IMPLEMENTATION_ROADMAP.md` — full six-phase roadmap with checklists.
+- `SYSTEM_INSTRUCTIONS.md` — enhanced system prompt for Claude Projects.
+- `.gitignore` — ignores test and update scratch files.
 
-- Expand pilot skills to 20 production-ready skills
-- All tiers (0-2) fully populated
-- Cross-tier collaboration patterns validated
-- Community contribution process established
-- Estimated timeline: 8-12 weeks after v1.0
+### Changed
+- `README.md` — updated to full eight-layer architecture vision. Added complete
+  2026 tool landscape (four categories). Updated roadmap to show v1.0 complete
+  and v1.1 active. Added Project Rules, AaaS, IDE Integration to platform description.
+- `SKILL-CREATOR.md` — updated to v1.1. Installation now covers all platforms
+  (Claude, ChatGPT, Gemini, Codex CLI, OpenCode, Aider, Antigravity, Devin Desktop,
+  Nimbalyst). Model table updated to July 2026 frontier.
+- `SKILL-DEFINITION-STANDARD.md` — updated to v1.1. Added portability annotations,
+  cultural intelligence as named component, full 10-phase Decision Engine,
+  Observability added to Constraint Matrix, Skill Temperature Spectrum formalized.
+- `CONTRIBUTING.md` — expanded tool guidance (5 terminal agents with example commands).
+- `context.md` — updated current status, tool recommendations, validation table.
+- `validation/test-harness.md` — added cross-model validation methodology table.
+  Clarified that Haiku validation = graceful degradation, not production readiness.
+- `registry/tier-0/software-architect-v1.0.1.md` — observability fix applied.
+  New Constraint Matrix row, Quality Gate, Mode 1 section, Mode 2 section, FM-18.
+  SDS compliance: 12/13 → 13/13.
 
----
-
-## [3.0.0] - Planned (Future)
-
-### Major Feature: CLI Tooling (Codex CLI Integration)
-
-- Terminal-native skill orchestration
-- Automated validation recording
-- Git-native workflow
-- CI/CD pipeline integration
-- Estimated timeline: Q4 2026 or later
-
----
-
-## [4.0.0] - Planned (Future)
-
-### Major Feature: Web Platform (Antigravity Integration)
-
-- Visual skill browser interface
-- Web-based skill testing and validation
-- Real-time collaboration features
-- Parallel agent orchestration
-- Estimated timeline: 2027 or later
-
----
-
-## [5.0.0] - Planned (Future)
-
-### Vision: Mature Ecosystem
-
-- 100+ skills in registry
-- Multi-language support
-- Advanced caching and orchestration
-- Sustainability funding model
-- Enterprise support and licensing
+### Pending (v1.1 in progress)
+- Testing strategy formalization for Tier 0 and Tier 1 skills
+- Tier 1 cross-model validation on all 3 pilot skills
 
 ---
 
-## Repository Information
+## [v1.0.1] — 2026-07-12 (patch)
 
-**GitHub:** https://github.com/Joshanihub/SkillOS  
-**License:** MIT  
-**Maintained By:** SkillOS Community  
-
----
-
-## How to Report Issues
-
-- **Bug Reports:** GitHub Issues with `bug` label
-- **Feature Requests:** GitHub Issues with `enhancement` label
-- **Security Vulnerabilities:** Private security advisory (do not open public issue)
+### Changed
+- `registry/tier-0/software-architect-v1.0.1.md` — observability gap fixed.
+  Addresses the one genuine SDS compliance gap found in Phase 2 validation.
 
 ---
 
-## Contributing
+## [v1.0.0] — 2026-07-12
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines and process.
+### Added
+- `SKILL-DEFINITION-STANDARD.md` — 13-component SDS governance contract
+- `SKILL-CREATOR.md` — 10-phase compiler system prompt
+- `registry/tier-0/software-architect-v1.0.0.md` — Tier 0 pilot skill
+- `registry/tier-1/frontend-specialist-v1.0.0.md` — Tier 1 pilot skill (3/3 PASS)
+- `registry/tier-2/react-expert-v1.0.0.md` — Tier 2 pilot skill
+- `README.md` — project front door
+- `CONTRIBUTING.md` — contribution guidelines
+- `context.md` — AI coding tool session context
+- `validation/test-harness.md` — three-test validation standard
+- `LICENSE` — MIT
+- GitHub Actions SDS compliance validator
+
+### Validation results (v1.0)
+- 7/9 PASS · 2/9 CONDITIONAL · 0/9 FAIL
+- SDS Compliance: 92% (12/13 — observability gap)
+- Model: claude-haiku-4.5 (graceful degradation test)
 
 ---
 
-**Last Updated:** 2026-07-12  
-**Semantic Versioning:** [semver.org](https://semver.org/)
+*CHANGELOG.md · SkillOS · MIT License*

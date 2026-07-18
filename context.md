@@ -32,57 +32,77 @@ The analogy: what Docker did for containers, SkillOS does for AI agent behavior.
 
 ```
 skillOS/
-├── SKILL-DEFINITION-STANDARD.md   ← The SDS — 13-component governance contract
-├── SKILL-CREATOR.md               ← Compiler system prompt — generates skills
-├── CONTRIBUTING.md                ← Contribution and governance rules
-├── context.md                     ← This file
+├── SKILL-DEFINITION-STANDARD.md   → The SDS — 13-component governance contract
+├── SKILL-CREATOR.md               → Compiler system prompt — generates skills
+├── CONTRIBUTING.md                → Contribution and governance rules
+├── CHANGELOG.md                   → Permanent version history
+├── context.md                     → This file
 │
 ├── registry/
-│   ├── tier-0/                    ← Foundational disciplines
-│   │   └── software-architect-v1.0.1.md   ← v1.0.1: observability fix
-│   ├── tier-1/                    ← Domain specialists
-│   │   └── frontend-specialist-v1.0.0.md
-│   ├── tier-2/                    ← Technology experts
-│   │   └── react-expert-v1.0.0.md
-│   ├── tier-3/                    ← Pattern specialists
-│   └── tier-4/                    ← Orchestration
+│   ├── tier-0/                    → Foundational disciplines
+│   │   ├── software-architect-v1.0.3.md
+│   │   ├── security-principles-v1.0.0.md
+│   │   └── systems-thinking-v1.0.0.md
+│   ├── tier-1/                    → Domain specialists
+│   │   ├── frontend-specialist-v1.0.1.md
+│   │   ├── backend-specialist-v1.0.0.md
+│   │   ├── database-specialist-v1.0.0.md
+│   │   ├── devops-specialist-v1.0.0.md
+│   │   └── ml-ai-specialist-v1.0.0.md
+│   ├── tier-2/                    → Technology experts
+│   │   ├── react-expert-v1.0.1.md
+│   │   └── typescript-specialist-v1.0.0.md
+│   ├── tier-3/                    → Pattern specialists
+│   └── tier-4/                    → Orchestration
 │
-└── validation/
-    └── test-harness.md            ← Standardized tests every skill must pass
+├── docs/
+│   ├── ASSUMPTION-TEMPLATE.md
+│   ├── CROSS-TIER-ROUTING-MAP.md
+│   ├── TESTING-STRATEGY.md
+│   ├── WORKFLOW-EXAMPLES.md
+│   └── INDUSTRY-VERTICALS.md
+│
+└── .github/
+    ├── PULL_REQUEST_TEMPLATE.md
+    ├── ISSUE_TEMPLATE/
+    │   ├── bug_report.yml
+    │   ├── new_skill_proposal.yml
+    │   ├── skill_improvement.yml
+    │   └── config.yml
+    └── workflows/
+        └── validate-sds.yml
 ```
 
 ---
 
 ## Current Status (July 2026)
 
-**Version:** v1.1 — Refinement phase complete (92%), Ready for v2.0 launch
+**Version:** v2.0-beta — Phase 2 (Registry) in progress
 
-**Completed (v1.0):**
+**Phase 1 — Complete (v1.1):**
 - SKILL-DEFINITION-STANDARD.md — 13 components, fully specified
 - SKILL-CREATOR.md — 10-phase compiler system prompt
-- 3 pilot skills — generated and validated
-- validation/test-harness.md — three-test standard
-- Validation run: 7/9 PASS, 92% SDS compliance (Haiku graceful degradation test)
 - GitHub Actions SDS compliance validator on PRs
-- Software Architect v1.0.3: observability fix applied, 13/13 SDS
-- Frontend Specialist v1.0.1, React Expert v1.0.1, Security Principles v1.0.0, Backend Specialist v1.0.0, Database Specialist v1.0.0, DevOps Specialist v1.0.0 — stable
 - README funding links live
-- context.md session file for AI coding tools
+- docs/ASSUMPTION-TEMPLATE.md, CROSS-TIER-ROUTING-MAP.md, TESTING-STRATEGY.md
+- Software Architect v1.0.3, Frontend Specialist v1.0.1, React Expert v1.0.1 — validated, stable
+- Security Principles v1.0.0, Backend Specialist v1.0.0, Database Specialist v1.0.0, DevOps Specialist v1.0.0 — rebuilt to full SDS v1.1, 3/3 PASS each
 
-**Completed (v1.1 — Refinement):**
-✅ Assumption Documentation Template — standardizes ambiguity handling
-✅ Cross-Tier Routing Map — documents Tier 0→1→2 handoffs
-✅ Testing Strategy Formalization — tier-specific test protocols + quality gates
-✅ Phase 1 → Phase 2 Transition Report — readiness assessment for v2.0
-✅ Rebuild Security Principles (Tier 0) — 417 lines, 13/13 SDS compliance
-✅ Rebuild Backend Specialist (Tier 1) — 435 lines, 13/13 SDS compliance
-✅ Rebuild Database Specialist (Tier 1) — 447 lines, 13/13 SDS compliance
-✅ Rebuild DevOps Specialist (Tier 1) — 419 lines, 13/13 SDS compliance
+**Phase 2 — In Progress (v2.0-beta):**
+✓ Phase 2.2 Community Infrastructure complete:
+  - .github/PULL_REQUEST_TEMPLATE.md (13-component gate)
+  - .github/ISSUE_TEMPLATE/ (4 templates: bug, proposal, improvement, config)
+  - docs/WORKFLOW-EXAMPLES.md, docs/INDUSTRY-VERTICALS.md
+✓ Phase 2.1 New Skills — 10-skill threshold reached:
+  - Systems Thinking v1.0.0 (Tier 0) — compiled, 13/13 SDS
+  - ML/AI Specialist v1.0.0 (Tier 1) — compiled, 13/13 SDS
+  - TypeScript Specialist v1.0.0 (Tier 2) — compiled, 13/13 SDS
 
-**Next (v2.0 — Registry Launch):**
-⏳ Community infrastructure: GitHub templates, issue templates, good first issues
-⏳ Project Rules Engine: documentation + fork examples
-⏳ Cross-model validation on pilot skills (Tier 1 models): GPT-5.5, Gemini 3.5 Pro
+**Next (Phase 2.3 — Announcement):**
+▢ Enable GitHub Discussions (manual — GitHub Settings)
+▢ Add repo topics: ai, agents, mcp, prompt-engineering, open-source, skill-registry
+▢ Mobile Specialist (Tier 1) — remaining Tier 1 skill before announcement
+▢ Write and publish launch post
 
 ---
 

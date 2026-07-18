@@ -1,0 +1,125 @@
+name: Skill Improvement
+description: Suggest additions to an existing skill — new failure modes, ethical constraints, output template improvements, regulatory guidance, or validation test cases.
+title: "[IMPROVEMENT] Skill name — brief description"
+labels: ["skill-improvement", "community"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Skill improvements are how the registry stays accurate as technology, regulations,
+        and best practices evolve. Every improvement strengthens the skill for everyone.
+
+        Use this template for additions and enhancements to existing skills.
+        For bugs and incorrect output, use the Bug Report template instead.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill to Improve
+      options:
+        - software-architect (Tier 0)
+        - frontend-specialist (Tier 1)
+        - react-expert (Tier 2)
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: skill_version
+    attributes:
+      label: Current Skill Version
+      placeholder: "e.g. 1.0.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: improvement_type
+    attributes:
+      label: Improvement Type
+      description: What component of the SDS are you improving?
+      multiple: true
+      options:
+        - Component 3 — Knowledge Taxonomy (new concept, evolution state update)
+        - Component 6 — Constraint Matrix (new regulatory guidance, regional coverage)
+        - Component 7 — Failure Mode Library (new domain-specific failure mode)
+        - Component 8 — Quality Gates (new domain-specific gate)
+        - Component 9 — Output Templates (new mode or improvement to existing)
+        - Component 10 — Ethical Constraints (new domain-specific ethical rule)
+        - Component 12 — Collaboration Contract (new routing path, updated handoff fields)
+        - Component 13 — Validation Record (cross-model validation results)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement_description
+    attributes:
+      label: Improvement Description
+      description: What specifically should be added or changed? Be precise.
+      placeholder: |
+        Example: "Component 7 — Add failure mode for React Server Components misuse:
+        developers often use 'use client' unnecessarily, turning RSCs into client
+        components and losing the bundle size benefit. This is a common mistake
+        not currently in the failure mode library."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Why This Improvement Matters
+      description: What breaks in production when this gap exists? Who does it affect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_content
+    attributes:
+      label: Proposed Content
+      description: |
+        If you can, write the actual content to add. Even a draft is helpful.
+        For failure modes, use the standard format:
+        Pattern / Why it fails / Detection / Prevention / Real-world impact
+      placeholder: |
+        FAILURE MODE: [Name]
+        Pattern: ...
+        Why it fails: ...
+        Detection: ...
+        Prevention: ...
+        Real-world impact: ...
+
+  - type: dropdown
+    id: regional_context
+    attributes:
+      label: Is This Regionally Specific?
+      description: Does this improvement apply globally or to a specific region?
+      options:
+        - Global — applies to all regions
+        - Region-specific — EU/GDPR context
+        - Region-specific — Africa/NDPR/Kenya Data Protection Act
+        - Region-specific — Americas/CCPA/LGPD/PIPEDA
+        - Region-specific — Asia-Pacific/PDPA/other
+        - Region-specific — Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or Source
+      description: |
+        What is the basis for this improvement?
+        Examples: production incident, official docs, benchmark data, regulatory update,
+        community feedback, research paper, personal experience.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: This improvement is domain-specific, not generic engineering advice
+          required: true
+        - label: I confirmed this gap exists in the current version of the skill
+          required: true
+        - label: This improvement does not duplicate content already in the skill
+          required: true

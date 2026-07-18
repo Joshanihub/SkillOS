@@ -1,0 +1,116 @@
+name: Bug Report — Skill Degradation or Logic Flaw
+description: Report incorrect output, validation failures, deprecated recommendations, or harmful responses from a registry skill.
+title: "[BUG] Skill name — brief description"
+labels: ["bug", "skill-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping maintain quality in the registry.
+        Every report makes SkillOS more reliable for everyone.
+        Please fill in as much detail as possible — it helps us reproduce and fix the issue faster.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Affected Skill
+      description: Which skill produced the incorrect output?
+      options:
+        - software-architect (Tier 0)
+        - frontend-specialist (Tier 1)
+        - react-expert (Tier 2)
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: skill_version
+    attributes:
+      label: Skill Version
+      description: The version of the skill (found in the Skill Metadata YAML block)
+      placeholder: "e.g. 1.0.1"
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model Used
+      description: The exact model and version you were using
+      placeholder: "e.g. claude-sonnet-5-20260401"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bug_type
+    attributes:
+      label: Bug Type
+      description: What category of issue is this?
+      options:
+        - Incorrect technical output (factually wrong)
+        - Deprecated pattern recommended as current
+        - Skill exceeded its documented capability boundary (hallucination)
+        - Ambiguity protocol not followed (wrong number of clarifying questions)
+        - Assumption not surfaced (proceeded without documenting)
+        - Routing failure (routed to wrong skill or failed to route)
+        - Ethical constraint violation (dark pattern, manipulation, harm)
+        - Global default assumed (language, region, infrastructure)
+        - Observability not included when it should be
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt That Triggered the Issue
+      description: Paste the exact prompt you sent to the skill
+      placeholder: "Paste your prompt here..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_output
+    attributes:
+      label: Actual Output (What the Skill Produced)
+      description: Paste the problematic output or summarize what went wrong
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: Expected Output (What Should Have Happened)
+      description: Describe what the skill should have produced or done instead
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical — output causes harm if implemented (security flaw, safety issue, harmful advice)
+        - High — output is technically wrong in a way that would break production
+        - Medium — output is incomplete or misleading but not immediately harmful
+        - Low — output is suboptimal but functional
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other information — project type, industry context, regulatory environment, etc.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I confirmed this issue with the skill version listed above
+          required: true
+        - label: I am not reporting a limitation of the AI model, but a flaw in the skill design
+          required: true
+        - label: I searched existing issues and this has not been reported before
+          required: true
