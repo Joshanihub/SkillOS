@@ -65,7 +65,7 @@ skillOS/
 - Validation run: 7/9 PASS, 92% SDS compliance (Haiku graceful degradation test)
 - GitHub Actions SDS compliance validator on PRs
 - Software Architect v1.0.3: observability fix applied, 13/13 SDS
-- Frontend Specialist v1.0.1, React Expert v1.0.1, Security Principles v1.0.0, Backend Specialist v1.0.0 — stable
+- Frontend Specialist v1.0.1, React Expert v1.0.1, Security Principles v1.0.0, Backend Specialist v1.0.0, Database Specialist v1.0.0, DevOps Specialist v1.0.0 — stable
 - README funding links live
 - context.md session file for AI coding tools
 
@@ -76,9 +76,10 @@ skillOS/
 ✅ Phase 1 → Phase 2 Transition Report — readiness assessment for v2.0
 ✅ Rebuild Security Principles (Tier 0) — 417 lines, 13/13 SDS compliance
 ✅ Rebuild Backend Specialist (Tier 1) — 435 lines, 13/13 SDS compliance
+✅ Rebuild Database Specialist (Tier 1) — 447 lines, 13/13 SDS compliance
+✅ Rebuild DevOps Specialist (Tier 1) — 419 lines, 13/13 SDS compliance
 
 **Next (v2.0 — Registry Launch):**
-⏳ Generate 2 new Tier 1 skills: Database Specialist, DevOps Specialist
 ⏳ Community infrastructure: GitHub templates, issue templates, good first issues
 ⏳ Project Rules Engine: documentation + fork examples
 ⏳ Cross-model validation on pilot skills (Tier 1 models): GPT-5.5, Gemini 3.5 Pro

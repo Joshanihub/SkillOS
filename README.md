@@ -461,9 +461,11 @@ NEVER                       → Block indefinitely waiting for perfect informati
 - [x] Cross-model validation on pilot skills (Tier 1 model results recorded)
 
 **v2.0 — Registry** *(in progress)*
-- [ ] 20+ skills across all tiers (5/20 complete)
+- [ ] 20+ skills across all tiers (7/20 complete)
 - [x] Rebuilt Security Principles (Tier 0) to 13/13 SDS compliance & validated (3/3 PASS)
 - [x] Rebuilt Backend Specialist (Tier 1) to 13/13 SDS compliance & validated (3/3 PASS)
+- [x] Rebuilt Database Specialist (Tier 1) to 13/13 SDS compliance & validated (3/3 PASS)
+- [x] Rebuilt DevOps Specialist (Tier 1) to 13/13 SDS compliance & validated (3/3 PASS)
 - [ ] Community contribution pipeline mature
 - [x] Automated SDS compliance check live in GitHub Actions
 
