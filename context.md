@@ -48,7 +48,8 @@ skillOS/
 │   │   ├── backend-specialist-v1.0.0.md
 │   │   ├── database-specialist-v1.0.0.md
 │   │   ├── devops-specialist-v1.0.0.md
-│   │   └── ml-ai-specialist-v1.0.0.md
+│   │   ├── ml-ai-specialist-v1.0.0.md
+│   │   └── mobile-specialist-v1.0.0.md
 │   ├── tier-2/                    → Technology experts
 │   │   ├── react-expert-v1.0.1.md
 │   │   └── typescript-specialist-v1.0.0.md
@@ -98,11 +99,12 @@ skillOS/
   - ML/AI Specialist v1.0.0 (Tier 1) — compiled, 13/13 SDS
   - TypeScript Specialist v1.0.0 (Tier 2) — compiled, 13/13 SDS
 
-**Next (Phase 2.3 — Announcement):**
-▢ Enable GitHub Discussions (manual — GitHub Settings)
-▢ Add repo topics: ai, agents, mcp, prompt-engineering, open-source, skill-registry
-▢ Mobile Specialist (Tier 1) — remaining Tier 1 skill before announcement
-▢ Write and publish launch post
+**Next (Phase 2.3 — Manual Announcement Actions):**
+▢ Publish launch post to dev.to or Hashnode (see SkillOsUpdates/LAUNCH-POST.md)
+▢ Post X/Twitter thread (see SkillOsUpdates/LAUNCH-THREAD-X.md — 12 tweets)
+▢ Submit Show HN post (see SkillOsUpdates/LAUNCH-HN-POST.md — post Tue–Thu 8–10am ET)
+▢ Enable GitHub Discussions (GitHub Settings → General → Features)
+▢ Add repo topics: ai, agents, mcp, prompt-engineering, open-source, skill-registry, llm, agi
 
 ---
 

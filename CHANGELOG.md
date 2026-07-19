@@ -7,7 +7,15 @@ Format: newest entries at the top.
 
 ---
 
-## [v2.0.0-beta] — 2026-07-18
+## [v2.0.0-beta] — 2026-07-19
+
+### Added — Phase 2.3 Announcement Content (SkillOsUpdates/, gitignored)
+- `SkillOsUpdates/LAUNCH-POST.md` — full launch article for dev.to / Hashnode (ready to publish)
+- `SkillOsUpdates/LAUNCH-THREAD-X.md` — 12-tweet X/Twitter launch thread (ready to post)
+- `SkillOsUpdates/LAUNCH-HN-POST.md` — Show HN post with title, body, and submission timing guidance
+
+### Added — Phase 2.1 New Skills (11-skill milestone — complete Tier 0 + Tier 1)
+- `registry/tier-1/mobile-specialist-v1.0.0.md` — compiled via Skill Creator v1.1. Cross-platform (Flutter/React Native) and native iOS/Android. 15 failure modes: insecure token storage, missing certificate pinning, online-only design, low-end device blindness, deep link hijacking, M-Pesa/non-card payment rail assumption. 4 output templates: architecture spec, payment integration, performance debug, store submission checklist.
 
 ### Added — Phase 2.1 New Skills (10-skill threshold reached)
 - `registry/tier-0/systems-thinking-v1.0.0.md` — compiled via Skill Creator v1.1. Conway's Law, Team Topologies, systemic failure modes (distributed monolith, resume-driven development, Goodhart's Law), 15 domain-specific failure modes, 4 output templates (trade-off analysis, socio-technical map, system dynamics map, root cause analysis).
