@@ -1,0 +1,39 @@
+name: security-review
+display_name: Full Security Audit
+description: >
+  Comprehensive security review of an existing system.
+  Activates Security Principles → Software Architect → DevOps Specialist.
+  Security Principles leads the threat model. Software Architect assesses
+  structural risks. DevOps Specialist audits the deployment surface.
+version: 1.0.0
+created: 2026-07-19
+tier_span: [0, 1]
+
+steps:
+  - step: 1
+    skill: security_principles
+    role: "Lead threat model: enumerate assets, threat actors, attack vectors, and critical mitigations"
+    context_input: initial_user_request
+    context_fields_to_pass:
+      - threat_model
+      - critical_findings
+      - compliance_gaps
+      - regional_context
+
+  - step: 2
+    skill: software_architect
+    role: "Assess structural security risks: auth boundaries, data flow, service isolation, blast radius"
+    context_input: step_1_output
+    context_fields_to_pass:
+      - structural_risk_assessment
+      - recommended_architectural_changes
+      - reversibility_classifications
+
+  - step: 3
+    skill: devops_specialist
+    role: "Audit deployment surface: secrets management, network exposure, container hardening, SLOs for security incidents"
+    context_input: step_2_output
+    context_fields_to_pass:
+      - deployment_hardening_recommendations
+      - incident_response_runbook_outline
+      - monitoring_and_alerting_gaps

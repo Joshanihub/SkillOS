@@ -1,0 +1,48 @@
+name: new-web-application
+display_name: New Web Application
+description: >
+  Full stack product build — from system architecture through to frontend implementation.
+  Activates Software Architect → Backend Specialist → Database Specialist → Frontend Specialist
+  in sequence, passing typed context at each handoff.
+version: 1.0.0
+created: 2026-07-19
+tier_span: [0, 1, 2]
+
+steps:
+  - step: 1
+    skill: software_architect
+    role: "Define the macro system design, API contracts, and technology constraints"
+    context_input: initial_user_request
+    context_fields_to_pass:
+      - api_contract
+      - recommended_patterns
+      - constraints_from_upstream
+      - regional_context
+      - compliance_requirements
+
+  - step: 2
+    skill: backend_specialist
+    role: "Implement the API layer, service boundaries, and data access patterns"
+    context_input: step_1_output
+    context_fields_to_pass:
+      - database_requirements
+      - api_implementation_notes
+      - authentication_strategy
+
+  - step: 3
+    skill: database_specialist
+    role: "Design the schema, indexes, and migration strategy"
+    context_input: step_2_output
+    context_fields_to_pass:
+      - schema_design
+      - migration_strategy
+      - query_optimization_notes
+
+  - step: 4
+    skill: frontend_specialist
+    role: "Design the component architecture and state management approach"
+    context_input: step_3_output
+    context_fields_to_pass:
+      - component_architecture
+      - state_management_approach
+      - api_integration_notes

@@ -1,0 +1,38 @@
+name: api-design
+display_name: API Design & Implementation
+description: >
+  Backend API architecture to full implementation.
+  Activates Software Architect → Backend Specialist → Database Specialist.
+  Use when the scope is API-only with no frontend work.
+version: 1.0.0
+created: 2026-07-19
+tier_span: [0, 1]
+
+steps:
+  - step: 1
+    skill: software_architect
+    role: "Define API contract, service boundaries, authentication strategy, and regional constraints"
+    context_input: initial_user_request
+    context_fields_to_pass:
+      - api_contract
+      - authentication_strategy
+      - regional_context
+      - compliance_requirements
+      - recommended_patterns
+
+  - step: 2
+    skill: backend_specialist
+    role: "Implement API endpoints, business logic, caching strategy, and error handling"
+    context_input: step_1_output
+    context_fields_to_pass:
+      - database_requirements
+      - performance_notes
+      - api_implementation_notes
+
+  - step: 3
+    skill: database_specialist
+    role: "Design schema, indexes, constraints, and migration plan for the API's data model"
+    context_input: step_2_output
+    context_fields_to_pass:
+      - schema_design
+      - migration_strategy
